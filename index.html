@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dual Bloom — Contemporary Symbolic Painting</title>
+<meta name="description" content="Dual Bloom — the moment when opposing parts of ourselves don't destroy each other, they blossom together. Contemporary symbolic paintings exploring the duality of the human experience.">
+<style>
+/* ============================================================
+   DUAL BLOOM — design tokens
+   Two worlds, inverted: cobalt / flame. Chalk line-work on both.
+   ============================================================ */
+:root{
+  --ink:      #0A0D24;
+  --ink-soft: #12163B;
+  --cobalt:   #1B2EA8;
+  --cobalt-dp:#101A6E;
+  --flame:    #C2411C;
+  --flame-hot:#E8742C;
+  --peach:    #F5A374;
+  --rose:     #E23A77;
+  --crimson:  #7E1024;
+  --chalk:    #EFE9DC;
+  --chalk-dim:#AEA99F;
+  --gold:     #B98A4A;
+
+  --font-display: "Didot","Bodoni MT","Bodoni 72","Playfair Display","Times New Roman",serif;
+  --font-body:   "Georgia","Iowan Old Style","Palatino",serif;
+  --font-utility:"Helvetica Neue","Arial",sans-serif;
+
+  --measure: 62ch;
+  --pad: clamp(1.25rem, 5vw, 4.5rem);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+
+body{
+  background:var(--ink);
+  color:var(--chalk);
+  font-family:var(--font-body);
+  font-size:1.0625rem;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* site-wide film grain — the tooth of the canvas */
+body::after{
+  content:"";position:fixed;inset:0;z-index:90;pointer-events:none;
+  opacity:.5;
+  background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2"/><feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.045 0"/></filter><rect width="240" height="240" filter="url(%23n)"/></svg>');
+}
+
+::selection{background:var(--flame-hot);color:var(--ink)}
+
+a{color:inherit}
+img,svg{display:block;max-width:100%}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+
+/* ---------- utility type ---------- */
+.eyebrow{
+  font-family:var(--font-utility);
+  font-size:.7rem;
+  letter-spacing:.34em;
+  text-transform:uppercase;
+  color:var(--chalk-dim);
+  display:flex;align-items:center;gap:1rem;
+}
+.eyebrow::before{content:"";width:2.4rem;height:1px;background:var(--flame-hot)}
+h1,h2,h3{font-family:var(--font-display);font-weight:400;text-wrap:balance}
+
+.outline{
+  color:transparent;
+  -webkit-text-stroke:1.5px var(--chalk);
+}
+
+/* ---------- entrance ---------- */
+.curtain{position:fixed;inset:0;z-index:200;display:flex;flex-direction:column;pointer-events:none}
+.curtain .half{flex:1;transition:transform 1.1s cubic-bezier(.76,0,.24,1) .35s}
+.curtain .half.top{background:var(--cobalt)}
+.curtain .half.bottom{background:var(--flame)}
+.curtain.open .half.top{transform:translateY(-101%)}
+.curtain.open .half.bottom{transform:translateY(101%)}
+.curtain .word{
+  position:absolute;inset:0;display:grid;place-items:center;
+  font-family:var(--font-display);font-size:clamp(1.2rem,3vw,2rem);
+  letter-spacing:.5em;text-transform:uppercase;color:var(--chalk);
+  transition:opacity .4s;
+}
+.curtain.open .word{opacity:0}
+@media (prefers-reduced-motion: reduce){.curtain{display:none}}
+
+/* ---------- nav ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:80;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.2rem var(--pad);
+  mix-blend-mode:difference;
+}
+.nav a{text-decoration:none}
+.nav .mark{
+  font-family:var(--font-display);
+  font-size:1.05rem;letter-spacing:.2em;text-transform:uppercase;
+  color:#fff;
+}
+.nav ul{display:flex;gap:2.2rem;list-style:none}
+.nav ul a{
+  font-family:var(--font-utility);
+  font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;
+  color:#fff;opacity:.7;
+  position:relative;padding-bottom:.3em;
+}
+.nav ul a::after{
+  content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;
+  background:#fff;transform:scaleX(0);transform-origin:right;
+  transition:transform .4s cubic-bezier(.2,.8,.2,1);
+}
+.nav ul a:hover,.nav ul a:focus-visible{opacity:1}
+.nav ul a:hover::after,.nav ul a:focus-visible::after{transform:scaleX(1);transform-origin:left}
+@media(max-width:640px){.nav ul{gap:1.1rem}.nav ul li:nth-child(2){display:none}}
+
+/* ---------- hero ---------- */
+.hero{
+  min-height:100svh;
+  display:flex;flex-direction:column;justify-content:center;
+  gap:2.6rem;
+  padding:calc(var(--pad) + 3rem) var(--pad) calc(var(--pad) + 2rem);
+  position:relative;
+  background:
+    radial-gradient(120% 90% at 82% 0%, rgba(27,46,168,.55), transparent 62%),
+    radial-gradient(110% 80% at 0% 100%, rgba(194,65,28,.38), transparent 55%),
+    var(--ink);
+}
+.hero-title{
+  font-size:clamp(3.6rem, 15vw, 12rem);
+  line-height:.9;
+  letter-spacing:.005em;
+  text-transform:uppercase;
+  display:flex;flex-direction:column;
+}
+.hero-title .w1{color:var(--chalk)}
+.hero-title .w2{
+  color:transparent;
+  -webkit-text-stroke:2px var(--chalk);
+  animation:bloomIn 2.6s ease 1.3s forwards;
+  font-style:italic;
+  margin-left:.08em;
+}
+@keyframes bloomIn{to{color:var(--peach);-webkit-text-stroke-color:var(--peach)}}
+.hero-sub{
+  max-width:36ch;
+  font-size:clamp(1.05rem, 2vw, 1.4rem);
+  font-style:italic;
+  color:var(--chalk-dim);
+  border-left:1px solid var(--flame-hot);
+  padding-left:1.4rem;
+}
+.hero-sub em{color:var(--peach);font-style:inherit}
+.hero .glyphs{
+  position:absolute;right:var(--pad);top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:1.7rem;
+  opacity:.55;
+}
+.hero .glyphs svg{width:25px;height:25px;stroke:var(--chalk);fill:none;stroke-width:1.3}
+@media(max-width:760px){.hero .glyphs{display:none}}
+.hero-foot{
+  position:absolute;bottom:1.6rem;left:var(--pad);right:var(--pad);
+  display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+  font-family:var(--font-utility);font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--chalk-dim);
+}
+.hero-foot .hours{font-variant-numeric:tabular-nums;color:var(--peach)}
+
+/* ---------- marquee ---------- */
+.marquee{
+  overflow:hidden;white-space:nowrap;
+  padding:1.6rem 0;
+  border-top:1px solid rgba(239,233,220,.14);
+  border-bottom:1px solid rgba(239,233,220,.14);
+  background:var(--ink);
+}
+.marquee .track{display:inline-flex;animation:slide 60s linear infinite}
+@keyframes slide{to{transform:translateX(-50%)}}
+.marquee span{
+  font-family:var(--font-display);
+  font-size:clamp(1.6rem,4vw,3rem);
+  text-transform:uppercase;letter-spacing:.14em;
+  color:transparent;-webkit-text-stroke:1.2px var(--chalk-dim);
+  padding-right:.5em;
+}
+.marquee em{font-style:italic;color:var(--peach);-webkit-text-stroke:0;padding:0 .35em}
+@media (prefers-reduced-motion: reduce){.marquee{display:none}}
+
+/* ---------- shared shells ---------- */
+section{position:relative}
+.shell{
+  max-width:1240px;margin-inline:auto;
+  padding:clamp(5rem,13vh,10rem) var(--pad);
+  display:flex;flex-direction:column;gap:3rem;
+}
+.prose{max-width:var(--measure);display:flex;flex-direction:column;gap:1.25rem}
+.prose p{color:var(--chalk-dim)}
+.prose p strong,.prose p em{color:var(--chalk)}
+
+/* ---------- philosophy ---------- */
+.poem{
+  font-family:var(--font-display);
+  font-size:clamp(2rem, 5.6vw, 4.6rem);
+  line-height:1.18;
+  text-transform:uppercase;
+  display:flex;flex-direction:column;gap:.18em;
+}
+.poem .shown{color:var(--chalk)}
+.poem .hidden-line{color:transparent;-webkit-text-stroke:1.4px var(--chalk-dim)}
+.poem .between{
+  color:var(--peach);font-style:italic;text-transform:none;
+  font-size:.58em;margin-top:.7em;
+}
+
+/* ---------- works ---------- */
+.works-intro .shell{padding-bottom:2.5rem}
+.work{
+  display:grid;
+  grid-template-columns:minmax(0,7fr) minmax(0,5fr);
+  gap:clamp(2.5rem,6vw,6rem);
+  align-items:center;
+  max-width:1240px;margin-inline:auto;
+  padding:clamp(5rem,12vh,8rem) var(--pad);
+}
+.work:nth-of-type(even){direction:rtl}
+.work:nth-of-type(even)>*{direction:ltr}
+@media(max-width:880px){
+  .work{grid-template-columns:1fr}
+  .work:nth-of-type(even){direction:ltr}
+}
+
+.field-cobalt {background:linear-gradient(180deg,var(--ink) 0%,#131e63 16%,#131e63 84%,var(--ink) 100%)}
+.field-crimson{background:linear-gradient(180deg,var(--ink) 0%,#470a17 16%,#470a17 84%,var(--ink) 100%)}
+.field-flame  {background:linear-gradient(180deg,var(--ink) 0%,#75270f 16%,#75270f 84%,var(--ink) 100%)}
+
+.frame{
+  position:relative;
+  box-shadow:0 40px 90px rgba(0,0,0,.6);
+  transition:transform .7s cubic-bezier(.2,.8,.2,1);
+  cursor:zoom-in;
+}
+/* the chalk contour — like the white outline traced around the Porsche */
+.frame::after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  border:1px solid rgba(239,233,220,.5);
+  transform:translate(14px,14px);
+  transition:transform .7s cubic-bezier(.2,.8,.2,1);
+}
+.frame:hover{transform:translate(-4px,-4px)}
+.frame:hover::after{transform:translate(20px,20px)}
+.frame .art{aspect-ratio:4/5;width:100%}
+.frame.square .art{aspect-ratio:1/1}
+.frame img.art{object-fit:cover;height:100%}
+
+.veil{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:1.7rem;
+  background:linear-gradient(180deg,transparent 34%,rgba(5,7,22,.9) 100%);
+  opacity:0;transition:opacity .5s;
+}
+.frame:hover .veil,.frame:focus-within .veil,.frame:focus-visible .veil{opacity:1}
+.veil p{
+  font-family:var(--font-utility);
+  font-size:.76rem;letter-spacing:.14em;line-height:1.95;
+  text-transform:uppercase;color:var(--chalk);
+}
+.veil .veil-label{font-size:.6rem;letter-spacing:.36em;color:var(--peach);margin-bottom:.45rem}
+.veil .zoom{
+  position:absolute;top:1.2rem;right:1.2rem;
+  font-family:var(--font-utility);font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--chalk-dim);
+}
+
+.work-text{display:flex;flex-direction:column;gap:1.15rem}
+.work-num{
+  font-family:var(--font-display);
+  font-size:clamp(2.8rem,6vw,5rem);
+  color:transparent;-webkit-text-stroke:1.5px var(--chalk);
+  line-height:1;
+}
+.work-title{font-size:clamp(1.8rem,3.6vw,2.8rem);letter-spacing:.015em}
+.work-title em{color:var(--peach)}
+.work-text>p{color:var(--chalk-dim);max-width:46ch}
+.work-text .hidden-note{
+  border-top:1px solid rgba(239,233,220,.25);
+  padding-top:1.05rem;
+  font-style:italic;color:var(--chalk);
+  max-width:46ch;
+}
+/* gallery plaque */
+.plaque{
+  display:grid;grid-template-columns:auto 1fr;gap:.35rem 1.6rem;
+  border:1px solid rgba(239,233,220,.25);
+  padding:1rem 1.3rem;
+  max-width:30rem;
+  font-family:var(--font-utility);
+  font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;
+}
+.plaque dt{color:var(--chalk-dim)}
+.plaque dd{color:var(--chalk)}
+
+/* ---------- tensions divider ---------- */
+.tensions .shell{align-items:center;text-align:center;gap:1.2rem}
+.tensions p{
+  font-family:var(--font-display);
+  font-size:clamp(1.5rem,3.6vw,3rem);
+  line-height:1.35;text-transform:uppercase;letter-spacing:.04em;
+}
+.tensions .a{color:var(--chalk)}
+.tensions .b{color:transparent;-webkit-text-stroke:1.2px var(--peach);font-style:italic}
+.tensions .amp{color:var(--chalk-dim);font-size:.6em;vertical-align:middle;padding:0 .4em}
+
+/* ---------- story ---------- */
+.story h2{font-size:clamp(2rem,4.6vw,3.6rem)}
+
+/* ---------- about ---------- */
+.about{background:var(--peach);color:var(--ink)}
+.about ::selection{background:var(--ink);color:var(--peach)}
+.about .eyebrow{color:#7d4526}
+.about .eyebrow::before{background:var(--cobalt)}
+.about h2{font-size:clamp(2.2rem,5vw,4.2rem);color:var(--cobalt)}
+.about .prose p{color:#4a2c17}
+.about .prose p strong{color:var(--ink)}
+.about .pull{
+  font-family:var(--font-display);
+  font-size:clamp(1.5rem,2.9vw,2.2rem);
+  font-style:italic;line-height:1.38;
+  color:var(--cobalt);max-width:26ch;
+  border-left:2px solid var(--cobalt);padding-left:1.2rem;
+}
+.about .shell{
+  display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);
+  gap:clamp(2.5rem,6vw,6rem);align-items:start;
+}
+@media(max-width:880px){.about .shell{display:flex;flex-direction:column}}
+.about .col{display:flex;flex-direction:column;gap:1.7rem}
+
+/* ---------- contact ---------- */
+.contact{
+  background:
+    radial-gradient(100% 130% at 50% 130%, rgba(194,65,28,.45), transparent 62%),
+    var(--ink);
+}
+.contact .shell{align-items:center;text-align:center;gap:2.1rem}
+.contact h2{font-size:clamp(2.6rem,8vw,6.5rem);text-transform:uppercase;line-height:1}
+.contact h2 .outline{-webkit-text-stroke-color:var(--peach);font-style:italic}
+.contact p{max-width:44ch;color:var(--chalk-dim)}
+.btn{
+  font-family:var(--font-utility);
+  font-size:.76rem;letter-spacing:.32em;text-transform:uppercase;
+  text-decoration:none;
+  color:var(--ink);background:var(--chalk);
+  padding:1.2rem 2.9rem;
+  display:inline-flex;align-items:center;gap:.9rem;
+  transition:background .35s,color .35s,gap .35s;
+}
+.btn::after{content:"→"}
+.btn:hover,.btn:focus-visible{background:var(--flame-hot);gap:1.3rem}
+
+footer{
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  padding:2.2rem var(--pad);
+  border-top:1px solid rgba(239,233,220,.12);
+  font-family:var(--font-utility);
+  font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--chalk-dim);
+}
+
+/* ---------- lightbox ---------- */
+.lightbox{
+  position:fixed;inset:0;z-index:150;
+  display:none;align-items:center;justify-content:center;
+  padding:clamp(1rem,4vw,3.5rem);
+  background:rgba(5,7,20,.94);
+}
+.lightbox.on{display:flex}
+.lightbox .lb-stage{max-width:min(88vh,900px);width:100%;box-shadow:0 40px 120px rgba(0,0,0,.8)}
+.lightbox .lb-stage .art{width:100%;height:auto}
+.lightbox .lb-cap{
+  position:absolute;bottom:1.4rem;left:50%;transform:translateX(-50%);
+  font-family:var(--font-utility);font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--chalk-dim);text-align:center;white-space:nowrap;
+}
+.lightbox .lb-close{
+  position:absolute;top:1.2rem;right:1.6rem;
+  font-family:var(--font-utility);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--chalk);padding:.6rem;
+}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease var(--d,0s),transform 1s ease var(--d,0s)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none}}
+
+a:focus-visible,.frame:focus-visible,button:focus-visible{outline:2px solid var(--flame-hot);outline-offset:4px}
+</style>
+</head>
+<body>
+
+<div class="curtain" id="curtain" aria-hidden="true">
+  <div class="half top"></div>
+  <div class="half bottom"></div>
+  <div class="word">Dual&nbsp;·&nbsp;Bloom</div>
+</div>
+
+<nav class="nav" aria-label="Main">
+  <a class="mark" href="#top">Dual Bloom</a>
+  <ul>
+    <li><a href="#works">Works</a></li>
+    <li><a href="#philosophy">Philosophy</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <p class="eyebrow">Contemporary symbolic painting</p>
+  <h1 class="hero-title" aria-label="Dual Bloom">
+    <span class="w1">Dual</span>
+    <span class="w2">Bloom</span>
+  </h1>
+  <p class="hero-sub">The moment when opposing parts of ourselves don't destroy each other — <em>they blossom together.</em></p>
+
+  <div class="glyphs" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M12 3v18M5 7h14M5 7l-2.5 5a2.8 2.8 0 0 0 5 0L5 7zm14 0l-2.5 5a2.8 2.8 0 0 0 5 0L19 7z"/></svg>
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4l2.4 1.6L12 7"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M12 2v16M9 5h6M10.5 18h3L12 22z"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M4 16c2-6 6-6 8-2 2-4 6-4 8 2M12 14v6"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M5 6v12M9 6v12M15 6v12M19 6v12M12 9.5v1M12 13.5v1"/></svg>
+  </div>
+  <div class="hero-foot">
+    <span>Scroll — there are two stories</span>
+    <span class="hours">11:11&ensp;·&ensp;999&ensp;·&ensp;5:55</span>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>Eat the soul <em>—</em> there are always two stories <em>—</em> eat the soul <em>—</em> the one we show, the one we hide <em>—</em>&nbsp;</span>
+    <span>Eat the soul <em>—</em> there are always two stories <em>—</em> eat the soul <em>—</em> the one we show, the one we hide <em>—</em>&nbsp;</span>
+  </div>
+</div>
+
+<!-- ================= PHILOSOPHY ================= -->
+<section class="philosophy" id="philosophy">
+  <div class="shell">
+    <p class="eyebrow reveal">Philosophy</p>
+    <p class="poem" aria-label="There are always two stories. The one we show. And the one we hide. My paintings exist between the two.">
+      <span class="shown reveal">There are always</span>
+      <span class="shown reveal" style="--d:.1s">two stories.</span>
+      <span class="shown reveal" style="--d:.2s">The one we show.</span>
+      <span class="hidden-line reveal" style="--d:.3s">And the one we hide.</span>
+      <span class="between reveal" style="--d:.45s">My paintings exist between the two.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ================= WORKS ================= -->
+<section class="works-intro" id="works">
+  <div class="shell">
+    <p class="eyebrow reveal">Selected works</p>
+    <div class="prose reveal">
+      <p>Three canvases, three inversions. A warm body on a cold field; a cold body on a burning one; a machine wearing flesh-pink. Around each figure, white paint-marker symbols — drawn like tattoo flash — carry the second story. <strong>Stay long enough and the hidden hour appears in each one.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- Work I -->
+<article class="field-cobalt">
+  <div class="work">
+    <div class="frame reveal" tabindex="0" role="button" aria-label="View Eat the Soul (11:11) full screen"
+         data-photo="images/painting-01.jpg"
+         data-caption="I — Eat the Soul (11:11) — acrylic &amp; paint marker on canvas"
+         data-alt="Eat the Soul (11:11) — kneeling figure in warm orange on a cobalt blue field scuffed with gold, surrounded by white line drawings: a crown, hanging scales, an ornate dagger, an ouroboros, a butterfly sealed in a bag, a cracked hand mirror, a key, a black widow, fangs, and the masks of comedy and tragedy.">
+      <svg class="art" viewBox="0 0 400 500" role="img" aria-label="Study for Eat the Soul (11:11)">
+        <defs>
+          <filter id="grain1"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .06 0"/><feComposite operator="over" in2="SourceGraphic"/></filter>
+          <filter id="brush1"><feTurbulence type="turbulence" baseFrequency="0.012 0.03" numOctaves="3" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="18"/></filter>
+          <filter id="scuff1"><feTurbulence type="turbulence" baseFrequency="0.05 0.012" numOctaves="2" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="26"/></filter>
+          <linearGradient id="body1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#2a3db8"/><stop offset=".1" stop-color="#F5A374"/><stop offset=".55" stop-color="#EE8A55"/><stop offset="1" stop-color="#E07038"/>
+          </linearGradient>
+          <radialGradient id="thigh1" cx=".4" cy=".3" r="1">
+            <stop offset="0" stop-color="#F7B183"/><stop offset="1" stop-color="#E07038"/>
+          </radialGradient>
+        </defs>
+        <rect width="400" height="500" fill="#1B2EA8"/>
+        <g filter="url(#brush1)" opacity=".55">
+          <rect x="30" y="120" width="120" height="180" fill="#14229a"/>
+          <rect x="240" y="220" width="140" height="200" fill="#101A6E"/>
+          <rect x="120" y="20" width="180" height="70" fill="#2438c0"/>
+        </g>
+        <g filter="url(#scuff1)" opacity=".7">
+          <rect x="4" y="40" width="26" height="90" fill="#B98A4A"/>
+          <rect x="368" y="120" width="28" height="110" fill="#B98A4A"/>
+          <rect x="30" y="452" width="90" height="22" fill="#B98A4A"/>
+          <rect x="270" y="8" width="90" height="20" fill="#B98A4A"/>
+          <rect x="350" y="380" width="40" height="80" fill="#B98A4A" opacity=".8"/>
+          <rect x="8" y="220" width="20" height="70" fill="#B98A4A" opacity=".7"/>
+        </g>
+        <!-- kneeling figure, headless, dip-dyed edge at the chest -->
+        <g filter="url(#brush1)">
+          <path d="M168 118 C 152 170 148 230 158 280 C 150 300 132 330 128 365 C 122 415 150 452 200 462 C 258 472 300 445 305 400 C 309 365 292 335 278 315 C 288 265 292 205 280 158 C 272 128 262 112 240 106 C 215 100 185 102 168 118 Z" fill="url(#body1)"/>
+          <path d="M150 330 C 120 360 108 400 128 432 C 148 462 200 470 240 458 C 190 458 154 440 146 405 C 140 375 146 348 150 330 Z" fill="url(#thigh1)"/>
+          <path d="M240 330 C 285 340 312 372 306 408 C 300 442 262 462 224 460 C 268 448 292 424 290 392 C 288 364 265 340 240 330 Z" fill="#D96A33" opacity=".8"/>
+          <path d="M168 118 C 190 108 226 104 248 112 L 246 126 C 224 116 190 118 170 128 Z" fill="#1B2EA8" opacity=".85"/>
+        </g>
+        <!-- the white second story -->
+        <g stroke="#EFE9DC" fill="none" stroke-width="1.5" opacity=".92">
+          <!-- crown, top left -->
+          <ellipse cx="90" cy="52" rx="52" ry="14"/>
+          <path d="M42 56 q10 26 24 30 M138 56 q-10 26 -24 30 M66 86 q24 12 48 0 M90 66 v20 M74 64 l-8 14 M106 64 l8 14"/>
+          <!-- hanging scales, top center -->
+          <path d="M222 40 v18 M196 58 h52 M204 58 v34 M240 58 v34"/>
+          <path d="M192 92 a12 8 0 0 0 24 0 z M228 92 a12 8 0 0 0 24 0 z"/>
+          <!-- ornate dagger, top right -->
+          <path d="M312 34 l0 96 M300 52 h24 M306 44 l12 16 M318 44 l-12 16 M306 130 l6 22 6-22 z"/>
+          <!-- butterfly in bag, left -->
+          <rect x="42" y="150" width="52" height="62" rx="6"/>
+          <path d="M42 162 h52 M60 186 q-10 -12 2 -18 q6 8 6 16 q0 -8 6 -16 q12 6 2 18 q10 10 -8 12 q-18 -2 -8 -12 z"/>
+          <!-- ouroboros, right -->
+          <circle cx="342" cy="230" r="25"/>
+          <path d="M342 205 l9 6 -9 7 M348 252 q6 -4 8 -10"/>
+          <!-- zippo with heart flame, right -->
+          <rect x="322" y="300" width="30" height="38" rx="4"/>
+          <path d="M322 312 h30 M333 294 q4 -12 8 0 q4 8 -4 8 q-8 0 -4 -8 z M331 315 l6 5 6 -5 -6 12 z"/>
+          <!-- cracked hand mirror, bottom left -->
+          <ellipse cx="76" cy="330" rx="27" ry="35"/>
+          <path d="M60 308 l34 44 M92 310 l-34 42 M76 296 q0 -14 -4 -18 M72 278 h9"/>
+          <!-- key with bow, bottom left -->
+          <path d="M56 428 c-8 -8 4 -20 12 -12 c8 -8 20 4 12 12 c8 8 -4 20 -12 12 c-8 8 -20 -4 -12 -12 z M74 434 l34 18 M96 446 l-4 8 M106 452 l-4 8"/>
+          <!-- widow spider, bottom center -->
+          <circle cx="180" cy="440" r="9"/><circle cx="180" cy="426" r="4"/>
+          <path d="M172 434 l-16 -10 M172 444 l-18 4 M175 450 l-10 14 M188 434 l16 -10 M188 444 l18 4 M185 450 l10 14"/>
+          <!-- fangs -->
+          <path d="M232 436 q4 -10 8 0 l4 12 q-8 4 -12 0 z M248 434 q4 -10 8 0 l2 12 q-6 4 -10 0 z M264 436 q4 -8 8 0 l0 10 q-4 4 -8 0 z"/>
+          <path d="M234 466 q4 8 8 0 l3 -8 q-7 -4 -11 0 z M251 468 q4 8 8 0 l2 -8 q-6 -4 -10 0 z"/>
+          <!-- comedy / tragedy masks, bottom right -->
+          <path d="M318 420 q-12 22 2 40 q14 12 26 -2 q8 -14 0 -38 q-16 -8 -28 0 z"/>
+          <path d="M326 436 q3 -4 6 0 M338 436 q3 -4 6 0 M328 452 q6 6 12 0 M332 444 l0 4"/>
+          <path d="M346 452 q16 -6 22 8 q4 16 -8 24 q-16 4 -22 -10 q-2 -14 8 -22 z"/>
+          <path d="M352 464 q3 3 6 0 M362 466 q3 3 6 0 M354 476 q6 -5 12 -1"/>
+        </g>
+        <g fill="#EFE9DC" font-family="Helvetica, Arial, sans-serif" letter-spacing="5">
+          <text x="46" y="242" font-size="27" style="writing-mode:vertical-rl" opacity=".95">EAT THE SOUL</text>
+          <text transform="translate(376 44) rotate(90)" font-size="24">11:11</text>
+        </g>
+        <g fill="#EFE9DC" font-family="serif" font-size="30" opacity=".9">
+          <text x="352" y="372">改</text>
+        </g>
+        <rect width="400" height="500" fill="transparent" filter="url(#grain1)"/>
+      </svg>
+      <div class="veil" aria-hidden="true">
+        <span class="zoom">Enlarge +</span>
+        <p class="veil-label">The hidden layer</p>
+        <p>A crown · scales · a dagger · a butterfly sealed in plastic · a cracked mirror · a key · the widow · fangs · both masks — 11:11, the hour of alignment</p>
+      </div>
+    </div>
+    <div class="work-text">
+      <span class="work-num reveal">I</span>
+      <h3 class="work-title reveal">Eat the Soul <em>(11:11)</em></h3>
+      <dl class="plaque reveal">
+        <dt>Series</dt><dd>Dual Bloom</dd>
+        <dt>Medium</dt><dd>Acrylic &amp; paint marker on canvas</dd>
+        <dt>Status</dt><dd>Original — on request</dd>
+      </dl>
+      <p class="reveal">The story we show: a body folded into itself, warm and at rest on a field of cobalt scuffed with gold. The story we hide is drawn around it in white — a crown above, justice weighed against desire, a butterfly kept too safe to fly, a mirror that has already cracked.</p>
+      <p class="hidden-note reveal">Look again at 11:11 — the minute when both hands agree.</p>
+    </div>
+  </div>
+</article>
+
+<!-- Work II -->
+<article class="field-crimson">
+  <div class="work">
+    <div class="frame square reveal" tabindex="0" role="button" aria-label="View 999 full screen"
+         data-photo="images/painting-02.jpg"
+         data-caption="II — 999 — acrylic &amp; paint marker on panel"
+         data-alt="999 — the rear wing of a pink and black Porsche, its lettering mirrored, traced with a white contour on a crimson field scattered with white line drawings: a roll of money, a kewpie doll in a party hat, lips, a stag beetle, a grenade, a chandelier on a chain, a crosshair and a chess queen, above the plate 999.">
+      <svg class="art" viewBox="0 0 400 400" role="img" aria-label="Study for 999">
+        <defs>
+          <filter id="grain2"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .07 0"/><feComposite operator="over" in2="SourceGraphic"/></filter>
+          <filter id="brush2"><feTurbulence type="turbulence" baseFrequency="0.015 0.04" numOctaves="3" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="10"/></filter>
+          <linearGradient id="pink2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#E4257E"/><stop offset="1" stop-color="#B01355"/>
+          </linearGradient>
+        </defs>
+        <rect width="400" height="400" fill="#A5182E"/>
+        <g filter="url(#brush2)" opacity=".65">
+          <rect x="240" y="0" width="160" height="400" fill="#8C0F22"/>
+          <rect x="255" y="150" width="145" height="120" fill="#B72038"/>
+          <rect x="300" y="300" width="100" height="100" fill="#901226"/>
+        </g>
+        <!-- white contour around the car, like the painting -->
+        <path d="M0 30 L252 -4 L268 96 L292 92 L286 210 C 240 262 120 290 0 296 Z" fill="none" stroke="#EFE3DC" stroke-width="3"/>
+        <!-- rear window -->
+        <path d="M0 34 L248 0 L252 96 L0 168 Z" fill="#141114"/>
+        <!-- body -->
+        <g filter="url(#brush2)">
+          <path d="M0 168 L252 96 L262 122 L0 208 Z" fill="url(#pink2)"/>
+          <!-- wing -->
+          <path d="M0 118 L286 60 L292 96 L0 176 Z" fill="#1c181c"/>
+          <path d="M286 60 L316 96 L292 122 L286 96 Z" fill="#231e23"/>
+          <path d="M0 208 L262 122 L258 210 C 190 252 88 272 0 276 Z" fill="#D81B60"/>
+          <path d="M0 276 C 88 272 190 252 258 210 L252 300 C 172 334 76 346 0 344 Z" fill="#A31048"/>
+          <path d="M0 344 C 76 346 172 334 252 300 L250 340 C 180 368 80 378 0 378 Z" fill="#5f0a2e"/>
+        </g>
+        <!-- mirrored PORS on the wing -->
+        <g transform="translate(150 118) rotate(-10)">
+          <text x="0" y="0" transform="scale(-1,1)" font-size="44" font-weight="700" letter-spacing="7" fill="#F48FB1" font-family="Helvetica, Arial, sans-serif" text-anchor="middle">PORS</text>
+        </g>
+        <!-- plate -->
+        <g transform="rotate(-3 150 352)" filter="url(#brush2)">
+          <rect x="100" y="330" width="100" height="46" fill="#c9c4bc"/>
+          <text x="118" y="366" font-size="32" font-weight="700" fill="#2a2430" font-family="Helvetica, Arial, sans-serif">999</text>
+        </g>
+        <!-- the white second story -->
+        <g stroke="#EFE3DC" fill="none" stroke-width="1.5" opacity=".9">
+          <!-- money roll, top -->
+          <ellipse cx="278" cy="34" rx="10" ry="13"/>
+          <path d="M278 21 l44 10 q10 4 0 8 l-44 8 M286 28 q20 4 0 10"/>
+          <!-- kewpie in party hat -->
+          <path d="M312 96 l10 -26 l8 26 M322 70 v-8"/>
+          <path d="M310 108 a14 12 0 1 1 26 2 q10 4 8 16 q-2 14 -14 18 q4 10 -6 12 q-10 2 -10 -8 q-12 -2 -14 -14 q-2 -12 10 -26 z"/>
+          <path d="M318 104 q2 -3 4 0 M330 104 q2 -3 4 0 M322 114 q3 3 6 0"/>
+          <!-- lips, top right -->
+          <path d="M358 40 q10 -12 20 -4 q10 -8 18 4 q-16 18 -38 0 z M358 40 q20 8 38 0"/>
+          <!-- stag beetle -->
+          <ellipse cx="374" cy="140" rx="12" ry="20"/>
+          <path d="M368 122 q-6 -14 4 -20 M380 122 q6 -14 -4 -20 M362 132 l-12 -6 M362 146 l-12 2 M364 156 l-10 10 M386 132 l12 -6 M386 146 l12 2 M384 156 l10 10 M374 122 v38"/>
+          <!-- grenade -->
+          <path d="M330 208 q-16 14 -14 34 q2 22 22 26 q20 -4 22 -26 q2 -20 -14 -34 z"/>
+          <path d="M326 200 h24 M330 200 v-8 h16 l8 -6 M324 224 h28 M322 240 h32 M326 254 h24 M338 208 v52"/>
+          <!-- chain + chandelier -->
+          <path d="M348 290 q4 6 0 10 q-4 6 0 12 M348 312 q-18 4 -22 18 h44 q-4 -14 -22 -18 z M330 330 q4 12 18 12 q14 0 18 -12 M336 342 v8 M348 344 v10 M360 342 v8"/>
+          <!-- crosshair -->
+          <circle cx="238" cy="366" r="14"/><path d="M238 346 v10 M238 376 v10 M218 366 h10 M248 366 h10"/>
+          <!-- chess queen -->
+          <path d="M370 330 l4 14 6 -10 4 10 6 -14 4 34 h-26 z M368 368 h30 M372 372 q12 6 24 0"/>
+        </g>
+        <g font-family="Helvetica, Arial, sans-serif" letter-spacing="3" fill="none" stroke="#EFE3DC" stroke-width="1">
+          <text x="272" y="300" font-size="24">EAT</text>
+          <text x="272" y="326" font-size="24">THE</text>
+          <text x="272" y="352" font-size="24">SOUL</text>
+        </g>
+        <rect width="400" height="400" fill="transparent" filter="url(#grain2)"/>
+      </svg>
+      <div class="veil" aria-hidden="true">
+        <span class="zoom">Enlarge +</span>
+        <p class="veil-label">The hidden layer</p>
+        <p>A roll of money · lips · a kewpie in a party hat · a stag beetle · a grenade, pin still in · a chandelier on a chain · the queen — and a plate that reads 999</p>
+      </div>
+    </div>
+    <div class="work-text">
+      <span class="work-num reveal">II</span>
+      <h3 class="work-title reveal">999</h3>
+      <dl class="plaque reveal">
+        <dt>Series</dt><dd>Dual Bloom</dd>
+        <dt>Medium</dt><dd>Acrylic &amp; paint marker on panel</dd>
+        <dt>Status</dt><dd>Original — on request</dd>
+      </dl>
+      <p class="reveal">Desire as a machine. The wing of something built to be wanted, painted the pink of skin and traced in white like a saint's halo, its name written backwards — the way we only ever see ourselves in mirrors. Around it: money, lips, a grenade with the pin still in.</p>
+      <p class="hidden-note reveal">Turn 999 upside down and it becomes its opposite. Every halo hides a horn.</p>
+    </div>
+  </div>
+</article>
+
+<!-- Work III -->
+<article class="field-flame">
+  <div class="work">
+    <div class="frame reveal" tabindex="0" role="button" aria-label="View He:ll (555) full screen"
+         data-photo="images/painting-03.jpg"
+         data-caption="III — He:ll (555) — acrylic &amp; paint marker on canvas"
+         data-alt="He:ll (555) — a torso in deep cobalt blue standing on a fiery red, orange and yellow impasto field, surrounded by white line drawings: a Venus symbol, the word FUCK mirrored, a bunny, cherries, a spider web, a tooth, swallows, the characters for Virgo, a dagger, dice, an eye, a rose, a lighter, an ace of hearts, a butterfly, a bow and arrow, a serpent, the number 555 and the word HE:LL.">
+      <svg class="art" viewBox="0 0 400 500" role="img" aria-label="Study for He:ll (555)">
+        <defs>
+          <filter id="grain3"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .07 0"/><feComposite operator="over" in2="SourceGraphic"/></filter>
+          <filter id="fire"><feTurbulence type="turbulence" baseFrequency="0.028 0.06" numOctaves="4" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="34"/></filter>
+          <linearGradient id="body3" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#3A55D8"/><stop offset=".5" stop-color="#2B47C4"/><stop offset="1" stop-color="#16277c"/>
+          </linearGradient>
+        </defs>
+        <rect width="400" height="500" fill="#C2411C"/>
+        <g filter="url(#fire)" opacity=".85">
+          <rect x="0" y="0" width="400" height="90" fill="#E8742C"/>
+          <rect x="0" y="70" width="160" height="120" fill="#A82812"/>
+          <rect x="230" y="90" width="170" height="140" fill="#E8742C"/>
+          <rect x="40" y="200" width="140" height="130" fill="#E01F1F"/>
+          <rect x="240" y="240" width="160" height="120" fill="#B93315"/>
+          <rect x="0" y="340" width="400" height="80" fill="#D8552A"/>
+          <rect x="60" y="420" width="300" height="80" fill="#A82812"/>
+          <rect x="150" y="30" width="120" height="60" fill="#F0A03A" opacity=".7"/>
+          <rect x="20" y="300" width="80" height="60" fill="#F0A03A" opacity=".5"/>
+          <rect x="300" y="380" width="80" height="60" fill="#E01F1F" opacity=".6"/>
+        </g>
+        <!-- standing torso, torn edge at the left shoulder -->
+        <g filter="url(#fire)">
+          <path d="M208 62 L 245 88 C 262 120 268 160 262 200 C 258 235 244 262 246 300 C 250 355 276 400 268 445 C 262 478 240 495 214 492 C 185 488 168 462 170 425 C 172 385 158 350 152 310 C 146 265 158 230 165 195 C 172 158 172 118 186 92 C 192 80 200 68 208 62 Z" fill="url(#body3)"/>
+          <path d="M186 150 a 27 24 0 1 0 54 4 a 27 24 0 1 0 -54 -4 z" fill="#3A55D8" opacity=".85"/>
+          <circle cx="199" cy="158" r="6" fill="#1d2f95"/>
+          <circle cx="243" cy="160" r="6" fill="#1d2f95"/>
+          <path d="M170 425 q20 -10 40 -4" stroke="#16277c" stroke-width="5" fill="none" opacity=".7"/>
+        </g>
+        <!-- the white second story -->
+        <g stroke="#F5EFE4" fill="none" stroke-width="1.5" opacity=".93">
+          <!-- venus symbol -->
+          <circle cx="46" cy="42" r="13"/><path d="M46 55 v20 M38 66 h16"/>
+          <!-- bunny -->
+          <path d="M196 30 q-6 -22 4 -26 q6 8 4 24 M212 28 q2 -22 12 -24 q4 10 -4 24 q10 8 6 20 q-6 14 -20 12 q-14 -2 -16 -16 q-2 -12 18 -16 z"/>
+          <!-- cherries -->
+          <path d="M142 44 q10 -14 24 -16 M150 60 a8 8 0 1 0 .1 0 M168 52 a8 8 0 1 0 .1 0 M152 52 q4 -14 14 -24 M170 44 q-2 -10 -4 -16"/>
+          <!-- web, top right -->
+          <path d="M330 16 l54 54 M384 16 l-54 54 M357 12 v62 M330 43 h60 M344 30 q13 -8 26 0 M338 43 q19 -12 38 0 M344 56 q13 8 26 0"/>
+          <!-- tooth -->
+          <path d="M320 96 q10 -12 20 0 q10 12 2 26 q-4 8 -8 -2 q-4 -10 -8 0 q-8 12 -6 -24 z"/>
+          <!-- swallows -->
+          <path d="M62 118 q-20 -16 -36 -8 q10 4 14 12 q-14 -2 -22 8 l30 4 q12 -2 14 -16 z M62 118 l14 22 M56 130 l-8 24"/>
+          <path d="M336 168 q20 -16 36 -8 q-10 4 -14 12 q14 -2 22 8 l-30 4 q-12 -2 -14 -16 z M336 168 l-14 22 M342 180 l8 24"/>
+          <!-- dagger, right -->
+          <path d="M322 226 l0 66 M312 240 h20 M316 232 l12 12 M328 232 l-12 12 M318 292 l4 16 4 -16 z"/>
+          <!-- dice -->
+          <rect x="352" y="232" width="34" height="34" rx="5" transform="rotate(12 369 249)"/>
+          <circle cx="362" cy="244" r="2.3" fill="#F5EFE4"/><circle cx="376" cy="258" r="2.3" fill="#F5EFE4"/><circle cx="369" cy="251" r="2.3" fill="#F5EFE4"/>
+          <!-- eye -->
+          <path d="M330 316 q24 -18 48 0 q-24 18 -48 0 z"/><circle cx="354" cy="316" r="6"/><path d="M342 302 l-4 -6 M354 300 v-8 M366 302 l4 -6"/>
+          <!-- lighter, left -->
+          <rect x="44" y="204" width="20" height="40" rx="4"/><path d="M44 216 h20 M50 204 v-8 h8"/>
+          <!-- rose, left -->
+          <path d="M88 268 q-14 -8 -8 -20 q10 -8 18 0 q10 -6 12 6 q2 12 -10 16 q-8 4 -12 -2 z M94 272 q-2 26 2 44 q-12 -8 -20 -2 M96 292 q10 -8 18 -4"/>
+          <!-- ace of hearts -->
+          <rect x="42" y="330" width="36" height="50" rx="4" transform="rotate(-8 60 355)"/>
+          <path d="M56 352 q-6 -8 2 -12 q4 6 4 10 q0 -4 4 -10 q8 4 2 12 l-6 8 z" transform="rotate(-8 60 355)"/>
+          <!-- butterfly, bottom left -->
+          <path d="M76 434 q-14 -16 2 -22 q8 8 8 20 q0 -12 8 -20 q16 6 2 22 q14 12 -10 16 q-24 -4 -10 -16 z M86 428 v-10 M82 416 l-4 -6 M90 416 l4 -6"/>
+          <!-- bow and arrow, right -->
+          <path d="M368 356 q22 22 0 44 M368 356 v44 M368 378 h-26 M342 378 l8 -5 M342 378 l8 5"/>
+          <!-- serpent -->
+          <path d="M320 416 q16 -8 22 4 q4 10 -8 14 q-12 4 -8 14 q4 10 18 6 M322 412 l-6 -6 M328 410 l-2 -8"/>
+          <!-- middle finger, bottom right -->
+          <path d="M330 470 q0 -26 8 -32 q6 4 4 30 M342 468 h18 q8 2 0 8 h-16 M344 478 h14 q8 2 0 8 h-14 M330 470 q-6 14 4 18 q16 6 24 -2"/>
+        </g>
+        <!-- mirrored FUCK + virgo characters + numbers -->
+        <g fill="#F5EFE4" font-family="Helvetica, Arial, sans-serif">
+          <g transform="translate(118 34)"><text transform="scale(-1,1)" font-size="26" letter-spacing="4" text-anchor="middle">FUCK</text></g>
+          <text x="298" y="352" font-size="28" letter-spacing="3" font-style="italic">555</text>
+          <text x="150" y="484" font-size="32" letter-spacing="9">HE:LL</text>
+        </g>
+        <g fill="#F5EFE4" font-family="serif" font-size="24" opacity=".9">
+          <text x="42" y="160">处女座</text>
+        </g>
+        <rect width="400" height="500" fill="transparent" filter="url(#grain3)"/>
+      </svg>
+      <div class="veil" aria-hidden="true">
+        <span class="zoom">Enlarge +</span>
+        <p class="veil-label">The hidden layer</p>
+        <p>Venus · swallows · a web · a tooth · dice · the open eye · a rose · the ace · a bow drawn back · a serpent — 5:55, the hour of change</p>
+      </div>
+    </div>
+    <div class="work-text">
+      <span class="work-num reveal">III</span>
+      <h3 class="work-title reveal">He:ll <em>(555)</em></h3>
+      <dl class="plaque reveal">
+        <dt>Series</dt><dd>Dual Bloom</dd>
+        <dt>Medium</dt><dd>Acrylic &amp; paint marker on canvas</dd>
+        <dt>Status</dt><dd>Original — on request</dd>
+      </dl>
+      <p class="reveal">A body of cold flame standing in a burning field — the exact inversion of the first canvas. The word at its feet splits in two: read it whole and it condemns; read the colon and it becomes an hour, a moment you can still leave.</p>
+      <p class="hidden-note reveal">555 is the number of change. Even hell keeps time.</p>
+    </div>
+  </div>
+</article>
+
+<!-- ================= TENSIONS ================= -->
+<section class="tensions">
+  <div class="shell">
+    <p class="reveal"><span class="a">Softness</span><span class="amp">&amp;</span><span class="b">sharpness</span></p>
+    <p class="reveal" style="--d:.1s"><span class="b">Desire</span><span class="amp">&amp;</span><span class="a">restraint</span></p>
+    <p class="reveal" style="--d:.2s"><span class="a">Dominance</span><span class="amp">&amp;</span><span class="b">vulnerability</span></p>
+    <p class="reveal" style="--d:.3s"><span class="b">Beauty</span><span class="amp">&amp;</span><span class="a">obsession</span></p>
+  </div>
+</section>
+
+<!-- ================= STORY ================= -->
+<section class="story">
+  <div class="shell">
+    <p class="eyebrow reveal">The story of the paintings</p>
+    <h2 class="reveal">Symbols that reveal<br><span class="outline">themselves over time</span></h2>
+    <div class="prose reveal">
+      <p>I create contemporary symbolic paintings that explore the duality of the human experience.</p>
+      <p>Through bold compositions and symbolic imagery, I explore the tension between <strong>softness and sharpness</strong>, <strong>desire and restraint</strong>, <strong>dominance and vulnerability</strong>, <strong>beauty and obsession</strong>.</p>
+      <p>Every painting contains hidden visual references designed to reveal themselves over time, inviting you to return, look closer, and uncover new layers of meaning.</p>
+      <p><em>My work is an invitation for anyone who has ever felt too complex to fit into a single identity.</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="about" id="about">
+  <div class="shell">
+    <div class="col">
+      <p class="eyebrow reveal">About me</p>
+      <h2 class="reveal">Contradiction is one of the most honest parts of being human.</h2>
+      <p class="pull reveal">Painting became the place where they stopped fighting.</p>
+    </div>
+    <div class="col prose">
+      <p class="reveal">I've never fit comfortably into a single identity. <strong>Strength and sensitivity. Control and surrender. Logic and emotion.</strong> For years, these parts of myself felt like they were in constant conflict.</p>
+      <p class="reveal">Every canvas allows opposing forces to exist together — to dance instead of compete. Hidden symbols become metaphors for the internal landscapes we rarely speak about.</p>
+      <p class="reveal">I want each piece to feel different every time someone looks at it. <strong>The longer you spend with it, the more it reveals.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="shell">
+    <p class="eyebrow reveal" style="justify-content:center">Acquisitions · commissions · exhibitions</p>
+    <h2 class="reveal">Look <span class="outline">closer</span></h2>
+    <p class="reveal">Originals and commissions are available on request. Write to the studio — and if a piece keeps calling you back, that's the second story doing its work.</p>
+    <a class="btn reveal" href="mailto:joachim.wodo@gmail.com?subject=Dual%20Bloom%20—%20inquiry">Contact the studio</a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Dual Bloom</span>
+  <span>There are always two stories.</span>
+</footer>
+
+<!-- ================= LIGHTBOX ================= -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Artwork view">
+  <button class="lb-close" id="lbClose">Close ✕</button>
+  <div class="lb-stage" id="lbStage"></div>
+  <p class="lb-cap" id="lbCap"></p>
+</div>
+
+<script>
+// Entrance
+window.addEventListener('load', function(){
+  var c = document.getElementById('curtain');
+  requestAnimationFrame(function(){ c.classList.add('open'); });
+  setTimeout(function(){ c.remove(); }, 2200);
+});
+
+// Swap the painted studies for real photographs when they exist.
+// Drop your photos in images/painting-01.jpg / -02.jpg / -03.jpg — nothing else to change.
+document.querySelectorAll('.frame[data-photo]').forEach(function(frame){
+  var src = frame.getAttribute('data-photo');
+  var probe = new Image();
+  probe.onload = function(){
+    var img = document.createElement('img');
+    img.src = src;
+    img.alt = frame.getAttribute('data-alt') || '';
+    img.className = 'art';
+    frame.replaceChild(img, frame.querySelector('.art'));
+  };
+  probe.src = src;
+});
+
+// Lightbox
+var lb = document.getElementById('lightbox');
+var lbStage = document.getElementById('lbStage');
+var lbCap = document.getElementById('lbCap');
+var lastFocus = null;
+
+function openLB(frame){
+  lastFocus = frame;
+  lbStage.innerHTML = '';
+  lbStage.appendChild(frame.querySelector('.art').cloneNode(true));
+  lbCap.innerHTML = frame.getAttribute('data-caption') || '';
+  lb.classList.add('on');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('lbClose').focus();
+}
+function closeLB(){
+  lb.classList.remove('on');
+  document.body.style.overflow = '';
+  if (lastFocus) lastFocus.focus();
+}
+document.querySelectorAll('.frame').forEach(function(frame){
+  frame.addEventListener('click', function(){ openLB(frame); });
+  frame.addEventListener('keydown', function(e){
+    if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openLB(frame); }
+  });
+});
+document.getElementById('lbClose').addEventListener('click', closeLB);
+lb.addEventListener('click', function(e){ if (e.target === lb) closeLB(); });
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && lb.classList.contains('on')) closeLB(); });
+
+// Scroll reveals
+var els = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window) {
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:.15});
+  els.forEach(function(el){ io.observe(el); });
+} else {
+  els.forEach(function(el){ el.classList.add('in'); });
+}
+</script>
+
+</body>
+</html>
