@@ -7,9 +7,9 @@ A single self-contained page (`index.html`): no build step, no dependencies.
 Open it in a browser, or drop the whole folder on any static host
 (Netlify, Vercel, GitHub Pages…).
 
-## Adding the photographs
+## Photographs
 
-Put the three photos in `images/`:
+The three canvases live in `images/` (web-optimised, ~1800px):
 
 | File | Painting |
 |---|---|
@@ -17,8 +17,7 @@ Put the three photos in `images/`:
 | `images/painting-02.jpg` | *999* — pink & black Porsche wing |
 | `images/painting-03.jpg` | *He:ll (555)* — blue torso on flame red |
 
-The page detects the files automatically and swaps them in place of the
-painted SVG studies — nothing else to change.
+Full-resolution originals are kept in `originals/`.
 
 ## Customising
 
