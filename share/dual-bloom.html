@@ -849,9 +849,11 @@ a:focus-visible,.frame:focus-visible,button:focus-visible{outline:2px solid var(
         <span class="price" id="sumPrice">—</span>
       </div>
 
-      <form name="order" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="orderForm">
-        <input type="hidden" name="form-name" value="order">
-        <p class="hp"><label>Do not fill this out: <input name="bot-field"></label></p>
+      <form action="https://formsubmit.co/joachim.wodo@gmail.com" method="POST" id="orderForm">
+        <input type="hidden" name="_subject" value="New order — House of Duality">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <p class="hp"><label>Do not fill this out: <input name="_honey"></label></p>
         <input type="hidden" name="Artwork" id="fArt" value="">
         <input type="hidden" name="Size" id="fSize" value="">
         <input type="hidden" name="Price" id="fPrice" value="">
@@ -969,9 +971,13 @@ document.querySelectorAll('.fragments').forEach(function(box){
 
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    var data = new URLSearchParams(new FormData(form)).toString();
+    var obj = {}; new FormData(form).forEach(function(v,k){ obj[k]=v; });
     var btn = form.querySelector('.order-submit'); btn.textContent = 'Sending…';
-    fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:data})
+    fetch('https://formsubmit.co/ajax/joachim.wodo@gmail.com', {
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify(obj)
+      })
       .then(function(r){
         if(!r.ok) throw new Error(r.status);
         wrap.style.display='none'; success.classList.add('on'); form.reset(); btn.textContent='Send my order';
