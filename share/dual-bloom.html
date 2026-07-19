@@ -316,6 +316,27 @@ article:nth-of-type(even) .work>*{direction:ltr}
 .plaque dt{color:var(--chalk-dim)}
 .plaque dd{color:var(--chalk)}
 
+/* ---------- acquire ---------- */
+.acquire{display:flex;flex-direction:column;gap:.55rem;margin:.4rem 0 .2rem}
+.acquire-btn{
+  align-self:flex-start;
+  font-family:var(--font-utility);
+  font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;
+  text-decoration:none;
+  color:var(--ink);background:var(--chalk);
+  padding:.95rem 1.8rem;
+  display:inline-flex;align-items:center;gap:.8rem;
+  transition:background .3s,color .3s,gap .3s;
+}
+.acquire-btn::after{content:"→"}
+.acquire-btn:hover,.acquire-btn:focus-visible{background:var(--ink-soft);color:var(--chalk);gap:1.15rem}
+.acquire-note{
+  font-family:var(--font-utility);
+  font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--chalk-dim);
+}
+.work.sold .acquire-btn{background:transparent;color:var(--chalk-dim);border:1px solid rgba(247,241,227,.35);pointer-events:none}
+
 /* ---------- fragments (interactive) ---------- */
 .fragments{
   display:flex;flex-direction:column;gap:.9rem;
@@ -417,6 +438,26 @@ article:nth-of-type(even) .work>*{direction:ltr}
 .btn::after{content:"→"}
 .btn:hover,.btn:focus-visible{background:var(--ink-soft);color:var(--chalk);gap:1.3rem}
 
+.contact .steps{
+  list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:1.4rem;
+  max-width:52rem;
+}
+.contact .steps li{
+  flex:1 1 12rem;
+  display:flex;flex-direction:column;align-items:center;gap:.7rem;
+  font-family:var(--font-utility);font-size:.74rem;letter-spacing:.06em;
+  color:var(--chalk-dim);line-height:1.5;
+}
+.contact .steps li span{
+  font-family:var(--font-display);font-style:italic;font-size:1.4rem;
+  width:2.6rem;height:2.6rem;display:grid;place-items:center;
+  color:var(--chalk);border:1px solid rgba(247,241,227,.4);border-radius:50%;
+}
+.contact .ship-note{
+  font-family:var(--font-utility);
+  font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--chalk-dim);
+}
 footer{
   display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
   padding:2.2rem var(--pad);
@@ -562,6 +603,7 @@ a:focus-visible,.frame:focus-visible,button:focus-visible{outline:2px solid var(
         <dt>Medium</dt><dd>Acrylic &amp; paint marker on canvas</dd>
         <dt>Status</dt><dd>Original, available</dd>
       </dl>
+      <div class="acquire reveal"><a class="acquire-btn" href="mailto:joachim.wodo@gmail.com?subject=Acquire%20Blues%20%E2%80%94%20House%20of%20Duality&amp;body=Hello%20Amy%2C%0A%0AI%20would%20like%20to%20acquire%20%22Blues%22%20(26%20x%2020%20in%2C%20%24950%20CAD).%0APlease%20send%20me%20the%20details%20to%20complete%20the%20purchase%20(payment%20and%20shipping).%0A%0AThank%20you%2C%0A">Acquire this work · $950 CAD</a><span class="acquire-note">Secure invoice sent by the studio</span></div>
       <p class="reveal">A body of cold flame standing in a burning field, the exact inversion of the first canvas. Gentleness and violence share the same wall here: doves beside a blade, a rose beside dice, an open eye that never blinks.</p>
       <div class="fragments reveal">
         <p class="frag-label">Vocabulary: choose one</p>
@@ -600,6 +642,7 @@ a:focus-visible,.frame:focus-visible,button:focus-visible{outline:2px solid var(
         <dt>Medium</dt><dd>Acrylic &amp; paint marker on panel</dd>
         <dt>Status</dt><dd>Original, available</dd>
       </dl>
+      <div class="acquire reveal"><a class="acquire-btn" href="mailto:joachim.wodo@gmail.com?subject=Acquire%20Hunger%20%E2%80%94%20House%20of%20Duality&amp;body=Hello%20Amy%2C%0A%0AI%20would%20like%20to%20acquire%20%22Hunger%22%20(20%20x%2020%20in%2C%20%24500%20CAD).%0APlease%20send%20me%20the%20details%20to%20complete%20the%20purchase%20(payment%20and%20shipping).%0A%0AThank%20you%2C%0A">Acquire this work · $500 CAD</a><span class="acquire-note">Secure invoice sent by the studio</span></div>
       <p class="reveal">This piece explores the seduction of luxury and the identities we build around desire. The Porsche becomes more than a car. It becomes a mirror. Around it, symbols quietly emerge, each carrying a fragment of a larger story. <strong>Some may speak to you immediately. Others may wait.</strong></p>
       <div class="fragments reveal">
         <p class="frag-label">Fragments: choose one</p>
@@ -637,6 +680,7 @@ a:focus-visible,.frame:focus-visible,button:focus-visible{outline:2px solid var(
         <dt>Medium</dt><dd>Acrylic &amp; paint marker on canvas</dd>
         <dt>Status</dt><dd>Original, available</dd>
       </dl>
+      <div class="acquire reveal"><a class="acquire-btn" href="mailto:joachim.wodo@gmail.com?subject=Acquire%20Mercy%20%E2%80%94%20House%20of%20Duality&amp;body=Hello%20Amy%2C%0A%0AI%20would%20like%20to%20acquire%20%22Mercy%22%20(28%20x%2022%20in%2C%20%24750%20CAD).%0APlease%20send%20me%20the%20details%20to%20complete%20the%20purchase%20(payment%20and%20shipping).%0A%0AThank%20you%2C%0A">Acquire this work · $750 CAD</a><span class="acquire-note">Secure invoice sent by the studio</span></div>
       <p class="reveal">The story we show: a body folded into itself, warm and at rest on a field of cobalt scuffed with gold. The story we hide is drawn around it in white: a crown above, justice weighed against desire, a butterfly kept too safe to fly, a mirror that has already cracked.</p>
       <div class="fragments reveal">
         <p class="frag-label">Fragments: choose one</p>
@@ -696,8 +740,14 @@ a:focus-visible,.frame:focus-visible,button:focus-visible{outline:2px solid var(
 <section class="contact" id="contact">
   <div class="shell">
     <h2 class="reveal">Look <span class="outline">closer</span></h2>
-    <p class="reveal">Originals and commissions are available on request. Write to the studio. And if a piece keeps calling you back, that's the second story doing its work.</p>
+    <p class="reveal">Every painting is an original, one of a kind. To acquire a piece, use its <strong>Acquire</strong> button above or write to the studio directly. You'll receive a secure invoice and shipping details, and the work is reserved for you the moment you reach out.</p>
+    <ol class="steps reveal">
+      <li><span>1</span>Choose a work and send your request</li>
+      <li><span>2</span>Receive a secure invoice from the studio</li>
+      <li><span>3</span>Your original is packed and shipped</li>
+    </ol>
     <a class="btn reveal" href="mailto:joachim.wodo@gmail.com?subject=House%20of%20Duality%20inquiry">Contact the studio</a>
+    <p class="ship-note reveal">Commissions welcome · Ships from Canada · Payment by secure invoice</p>
   </div>
 </section>
 
