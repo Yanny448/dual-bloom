@@ -5,7 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>House of Duality · Amy Lessard</title>
 <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="18" fill="%237D160E"/><g fill="none" stroke="%23F7F1E3" stroke-width="5" stroke-linecap="square"><path d="M50 22 L29 88"/><path d="M50 22 C51 39 63 51 77 54"/><path d="M24 57 L63 55 L69 87"/><path d="M25 60 C40 70 57 80 69 87"/></g></svg>'>
-<meta name="description" content="House of Duality, by Amy Lessard. The beauty of contradiction: contemporary symbolic paintings exploring the duality of the human experience.">
+<meta name="description" content="House of Duality — the paintings of Amy Lessard. The beauty of contradiction. Contemporary symbolic art exploring the duality of the human experience. / La beauté de la contradiction : peinture symbolique contemporaine.">
+<link rel="canonical" href="https://houseofduality.ca/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="House of Duality">
+<meta property="og:title" content="House of Duality · Amy Lessard">
+<meta property="og:description" content="The beauty of contradiction — contemporary symbolic painting by Amy Lessard. / La beauté de la contradiction — peinture symbolique contemporaine.">
+<meta property="og:url" content="https://houseofduality.ca/">
+<meta property="og:image" content="https://raw.githubusercontent.com/Yanny448/dual-bloom/main/images/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="House of Duality — three paintings by Amy Lessard on an oxblood ground">
+<meta property="og:locale" content="fr_CA">
+<meta property="og:locale:alternate" content="en_CA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="House of Duality · Amy Lessard">
+<meta name="twitter:description" content="The beauty of contradiction — contemporary symbolic painting. / La beauté de la contradiction.">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Yanny448/dual-bloom/main/images/og.jpg">
+<meta name="theme-color" content="#7D160E">
 <style>
 /* ============================================================
    DUAL BLOOM — design tokens
@@ -573,6 +590,26 @@ footer{
 @media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none}}
 
 a:focus-visible,.frame:focus-visible,button:focus-visible{outline:2px solid var(--chalk);outline-offset:4px}
+
+/* language toggle */
+.langtog{
+  font-family:var(--font-utility);
+  font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--chalk);border:1px solid rgba(247,241,227,.5);
+  padding:.35rem .7rem;background:transparent;cursor:pointer;
+  transition:background .3s,color .3s;
+}
+.langtog:hover,.langtog:focus-visible{background:var(--chalk);color:var(--ink)}
+.nav ul li.lang-li::after{display:none}
+
+/* contact channels */
+.contact .channels{
+  display:flex;gap:1.6rem;flex-wrap:wrap;justify-content:center;
+  font-family:var(--font-utility);font-size:.8rem;letter-spacing:.12em;
+}
+.contact .channels a{color:var(--chalk);text-decoration:none;border-bottom:1px solid rgba(247,241,227,.4);padding-bottom:.15rem;transition:border-color .3s}
+.contact .channels a:hover{border-color:var(--peach)}
+
 </style>
 </head>
 <body>
@@ -606,48 +643,49 @@ a:focus-visible,.frame:focus-visible,button:focus-visible{outline:2px solid var(
 <nav class="nav" aria-label="Main">
   <a class="mark" href="#top"><svg viewBox="0 0 400 535" class="sig" aria-hidden="true"><use href="#sigmark"/></svg>House of Duality</a>
   <ul>
-    <li><a href="#works">Works</a></li>
-    <li><a href="#philosophy">Philosophy</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#works" data-en="Works" data-fr="Œuvres">Works</a></li>
+    <li><a href="#philosophy" data-en="Vocabulary" data-fr="Vocabulaire">Vocabulary</a></li>
+    <li><a href="#about" data-en="About" data-fr="À propos">About</a></li>
+    <li><a href="#contact" data-en="Contact" data-fr="Contact">Contact</a></li>
+    <li class="lang-li"><button class="langtog" id="langtog" type="button" aria-label="Language / Langue">EN</button></li>
   </ul>
 </nav>
 
 <!-- ================= HERO ================= -->
 <header class="hero" id="top">
-  <p class="eyebrow">Amy Lessard · Contemporary symbolic painting</p>
+  <p class="eyebrow" data-en="Amy Lessard · Contemporary symbolic painting" data-fr="Amy Lessard · Peinture symbolique contemporaine">Amy Lessard · Contemporary symbolic painting</p>
   <h1 class="hero-title" aria-label="House of Duality">
     <span class="w1">House</span>
     <span class="w2">of Duality</span>
   </h1>
-  <p class="hero-sub">We are never just one thing. <em>Neither are my paintings.</em></p>
+  <p class="hero-sub" data-en="We are never just one thing. <em>Neither are my paintings.</em>" data-fr="Nous ne sommes jamais une seule chose. <em>Mes toiles non plus.</em>">We are never just one thing. <em>Neither are my paintings.</em></p>
 
   <div class="sigmark" aria-hidden="true">
     <svg viewBox="0 0 400 535" class="sig"><use href="#sigmark"/></svg>
   </div>
   <div class="hero-foot">
-    <span>Scroll. Look closer.</span>
+    <span data-en="Scroll. Look closer." data-fr="Défilez. Regardez de plus près.">Scroll. Look closer.</span>
     <span class="hours">Amy Lessard</span>
   </div>
 </header>
 
 <div class="marquee" aria-hidden="true">
   <div class="track">
-    <span>House of Duality <em>·</em> the beauty of contradiction <em>·</em> we are never just one thing <em>·</em> neither are my paintings <em>·</em>&nbsp;</span>
-    <span>House of Duality <em>·</em> the beauty of contradiction <em>·</em> we are never just one thing <em>·</em> neither are my paintings <em>·</em>&nbsp;</span>
+    <span data-en="House of Duality <em>·</em> the beauty of contradiction <em>·</em> we are never just one thing <em>·</em> neither are my paintings <em>·</em>&nbsp;" data-fr="House of Duality <em>·</em> la beauté de la contradiction <em>·</em> nous ne sommes jamais une seule chose <em>·</em> mes toiles non plus <em>·</em>&nbsp;">House of Duality <em>·</em> the beauty of contradiction <em>·</em> we are never just one thing <em>·</em> neither are my paintings <em>·</em>&nbsp;</span>
+    <span data-en="House of Duality <em>·</em> the beauty of contradiction <em>·</em> we are never just one thing <em>·</em> neither are my paintings <em>·</em>&nbsp;" data-fr="House of Duality <em>·</em> la beauté de la contradiction <em>·</em> nous ne sommes jamais une seule chose <em>·</em> mes toiles non plus <em>·</em>&nbsp;">House of Duality <em>·</em> the beauty of contradiction <em>·</em> we are never just one thing <em>·</em> neither are my paintings <em>·</em>&nbsp;</span>
   </div>
 </div>
 
 <!-- ================= PHILOSOPHY ================= -->
 <section class="philosophy" id="philosophy">
   <div class="shell">
-    <p class="eyebrow reveal">House of Duality · Vocabulary</p>
-    <div class="prose reveal"><p>Some paintings contain recurring fragments that form part of the visual language of House of Duality.</p></div>
+    <p class="eyebrow reveal" data-en="House of Duality · Vocabulary" data-fr="House of Duality · Vocabulaire">House of Duality · Vocabulary</p>
+    <div class="prose reveal"><p data-en="Some paintings contain recurring fragments that form part of the visual language of House of Duality." data-fr="Certaines toiles contiennent des fragments récurrents qui forment le langage visuel de House of Duality.">Some paintings contain recurring fragments that form part of the visual language of House of Duality.</p></div>
     <p class="poem" aria-label="Some return. Others appear only once. They are not meant to be solved. They exist to be interpreted.">
-      <span class="shown reveal">Some return.</span>
-      <span class="shown reveal" style="--d:.1s">Others appear only once.</span>
-      <span class="hidden-line reveal" style="--d:.25s">They are not meant to be solved.</span>
-      <span class="between reveal" style="--d:.4s">They exist to be interpreted.</span>
+      <span class="shown reveal" data-en="Some return." data-fr="Certains reviennent.">Some return.</span>
+      <span class="shown reveal" style="--d:.1s" data-en="Others appear only once." data-fr="D&#39;autres n&#39;apparaissent qu&#39;une fois.">Others appear only once.</span>
+      <span class="hidden-line reveal" style="--d:.25s" data-en="They are not meant to be solved." data-fr="Ils ne sont pas là pour être résolus.">They are not meant to be solved.</span>
+      <span class="between reveal" style="--d:.4s" data-en="They exist to be interpreted." data-fr="Ils existent pour être interprétés.">They exist to be interpreted.</span>
     </p>
   </div>
 </section>
@@ -655,7 +693,7 @@ a:focus-visible,.frame:focus-visible,button:focus-visible{outline:2px solid var(
 <!-- ================= WORKS ================= -->
 <section class="works-intro" id="works">
   <div class="shell">
-    <p class="eyebrow reveal">Selected works</p>
+    <p class="eyebrow reveal" data-en="Selected works" data-fr="Œuvres choisies">Selected works</p>
   </div>
 </section>
 
@@ -666,31 +704,31 @@ a:focus-visible,.frame:focus-visible,button:focus-visible{outline:2px solid var(
          data-caption="I · Blues · acrylic &amp; paint marker on canvas">
       <img class="art" src="images/painting-03.jpg" alt="Blues: a torso in deep cobalt blue standing on a fiery red, orange and yellow impasto field, surrounded by white line drawings: a Venus symbol, the word FUCK mirrored, a bunny, cherries, a spider web, a tooth, swallows, the characters for Virgo, a dagger, dice, an eye, a rose, a lighter, an ace of hearts, a butterfly, a bow and arrow, a serpent, the number 555 and the word HE:LL." loading="lazy">
       <div class="veil" aria-hidden="true">
-        <span class="zoom">Enlarge +</span>
-        <p class="veil-label">The hidden layer</p>
-        <p>Venus · swallows · a web · a tooth · dice · the open eye · a rose · the ace · a bow drawn back · a serpent. 5:55, the hour of change.</p>
+        <span class="zoom" data-en="Enlarge +" data-fr="Agrandir +">Enlarge +</span>
+        <p class="veil-label" data-en="The hidden layer" data-fr="La couche cachée">The hidden layer</p>
+        <p data-en="Venus · swallows · a web · a tooth · dice · the open eye · a rose · the ace · a bow drawn back · a serpent. 5:55, the hour of change." data-fr="Vénus · des hirondelles · une toile · une dent · des dés · l&#39;œil ouvert · une rose · l&#39;as · un arc bandé · un serpent. 5:55, l&#39;heure du changement.">Venus · swallows · a web · a tooth · dice · the open eye · a rose · the ace · a bow drawn back · a serpent. 5:55, the hour of change.</p>
       </div>
     </div>
     <div class="work-text">
       <span class="work-num reveal">I</span>
       <h3 class="work-title reveal">Blues</h3>
       <dl class="plaque reveal">
-        <dt>Artist</dt><dd>Amy Lessard</dd>
-        <dt>Series</dt><dd>House of Duality</dd>
-        <dt>Size</dt><dd>26 × 20 in</dd>
-        <dt>Price</dt><dd>$950 CAD</dd>
-        <dt>Medium</dt><dd>Acrylic &amp; paint marker on canvas</dd>
-        <dt>Status</dt><dd>Original, available</dd>
+        <dt data-en="Artist" data-fr="Artiste">Artist</dt><dd>Amy Lessard</dd>
+        <dt data-en="Series" data-fr="Série">Series</dt><dd>House of Duality</dd>
+        <dt data-en="Size" data-fr="Format">Size</dt><dd data-en="26 × 20 in" data-fr="26 × 20 po">26 × 20 in</dd>
+        <dt data-en="Price" data-fr="Prix">Price</dt><dd data-en="$950 CAD" data-fr="950 $ CAD">$950 CAD</dd>
+        <dt data-en="Medium" data-fr="Technique">Medium</dt><dd data-en="Acrylic &amp; paint marker on canvas" data-fr="Acrylique et marqueur sur toile">Acrylic &amp; paint marker on canvas</dd>
+        <dt data-en="Status" data-fr="Statut">Status</dt><dd data-en="Original, available" data-fr="Original, disponible">Original, available</dd>
       </dl>
-      <div class="acquire reveal"><button class="acquire-btn" type="button" data-artwork="Blues" data-size="26 × 20 in" data-price="$950 CAD">Acquire this work · $950 CAD</button><span class="acquire-note">Order &amp; shipping handled by the studio</span></div>
-      <p class="reveal">A body of cold flame standing in a burning field, the exact inversion of the first canvas. Gentleness and violence share the same wall here: doves beside a blade, a rose beside dice, an open eye that never blinks.</p>
+      <div class="acquire reveal"><button class="acquire-btn" type="button" data-artwork="Blues" data-size="26 × 20 in" data-price="$950 CAD" data-en="Acquire this work · $950 CAD" data-fr="Acquérir cette œuvre · 950 $ CAD">Acquire this work · $950 CAD</button><span class="acquire-note" data-en="Order &amp; shipping handled by the studio" data-fr="Commande et livraison gérées par l&#39;atelier">Order &amp; shipping handled by the studio</span></div>
+      <p class="reveal" data-en="A body of cold flame standing in a burning field, the exact inversion of the first canvas. Gentleness and violence share the same wall here: doves beside a blade, a rose beside dice, an open eye that never blinks." data-fr="Un corps de flamme froide dressé dans un champ en feu, l&#39;exacte inversion de la première toile. La douceur et la violence partagent ici le même mur : des colombes près d&#39;une lame, une rose près des dés, un œil ouvert qui ne cligne jamais.">A body of cold flame standing in a burning field, the exact inversion of the first canvas. Gentleness and violence share the same wall here: doves beside a blade, a rose beside dice, an open eye that never blinks.</p>
       <div class="fragments reveal">
-        <p class="frag-label">Vocabulary: choose one</p>
+        <p class="frag-label" data-en="Vocabulary: choose one" data-fr="Vocabulaire : choisissez-en un">Vocabulary: choose one</p>
         <div class="frag-row" role="group" aria-label="Vocabulary">
-          <button class="frag" type="button" aria-pressed="false" data-line="Every choice leaves another thread behind.">The Web</button>
-          <button class="frag" type="button" aria-pressed="false" data-line="Gentleness isn&#39;t the absence of strength.">The Dove</button>
-          <button class="frag" type="button" aria-pressed="false" data-line="Not every transformation is gentle.">The Blade</button>
-          <button class="frag" type="button" aria-pressed="false" data-line="Creation begins where certainty ends.">Venus</button>
+          <button class="frag" type="button" aria-pressed="false" data-line="Every choice leaves another thread behind." data-line-en="Every choice leaves another thread behind." data-line-fr="Chaque choix laisse un autre fil derrière lui." data-en="The Web" data-fr="La Toile">The Web</button>
+          <button class="frag" type="button" aria-pressed="false" data-line="Gentleness isn&#39;t the absence of strength." data-line-en="Gentleness isn&#39;t the absence of strength." data-line-fr="La douceur n&#39;est pas l&#39;absence de force." data-en="The Dove" data-fr="La Colombe">The Dove</button>
+          <button class="frag" type="button" aria-pressed="false" data-line="Not every transformation is gentle." data-line-en="Not every transformation is gentle." data-line-fr="Toute transformation n&#39;est pas douce." data-en="The Blade" data-fr="La Lame">The Blade</button>
+          <button class="frag" type="button" aria-pressed="false" data-line="Creation begins where certainty ends." data-line-en="Creation begins where certainty ends." data-line-fr="La création commence où finit la certitude." data-en="Venus" data-fr="Vénus">Venus</button>
         </div>
         <p class="frag-line" aria-live="polite">&nbsp;</p>
       </div>
@@ -705,30 +743,30 @@ a:focus-visible,.frame:focus-visible,button:focus-visible{outline:2px solid var(
          data-caption="II · Hunger · acrylic &amp; paint marker on panel">
       <img class="art" src="images/painting-02.jpg" alt="Hunger: the rear wing of a pink and black Porsche, its lettering mirrored, traced with a white contour on a crimson field scattered with white line drawings: a roll of money, a kewpie doll in a party hat, lips, a stag beetle, a grenade, a chandelier on a chain, a crosshair and a chess queen, above the plate 999." loading="lazy">
       <div class="veil" aria-hidden="true">
-        <span class="zoom">Enlarge +</span>
-        <p class="veil-label">The hidden layer</p>
-        <p>The kiss · the teddy in a party hat · a roll of money · a stag beetle · the grenade, pin still in · a chandelier on a chain · the queen, and a plate that reads 999.</p>
+        <span class="zoom" data-en="Enlarge +" data-fr="Agrandir +">Enlarge +</span>
+        <p class="veil-label" data-en="The hidden layer" data-fr="La couche cachée">The hidden layer</p>
+        <p data-en="The kiss · the teddy in a party hat · a roll of money · a stag beetle · the grenade, pin still in · a chandelier on a chain · the queen, and a plate that reads 999." data-fr="Le baiser · l&#39;ourson au chapeau de fête · une liasse de billets · un lucane · la grenade, goupille en place · un lustre suspendu · la reine, et une plaque où l&#39;on lit 999.">The kiss · the teddy in a party hat · a roll of money · a stag beetle · the grenade, pin still in · a chandelier on a chain · the queen, and a plate that reads 999.</p>
       </div>
     </div>
     <div class="work-text">
       <span class="work-num reveal">II</span>
       <h3 class="work-title reveal">Hunger</h3>
       <dl class="plaque reveal">
-        <dt>Artist</dt><dd>Amy Lessard</dd>
-        <dt>Series</dt><dd>House of Duality</dd>
-        <dt>Size</dt><dd>20 × 20 in</dd>
-        <dt>Price</dt><dd>$500 CAD</dd>
-        <dt>Medium</dt><dd>Acrylic &amp; paint marker on panel</dd>
-        <dt>Status</dt><dd>Original, available</dd>
+        <dt data-en="Artist" data-fr="Artiste">Artist</dt><dd>Amy Lessard</dd>
+        <dt data-en="Series" data-fr="Série">Series</dt><dd>House of Duality</dd>
+        <dt data-en="Size" data-fr="Format">Size</dt><dd data-en="20 × 20 in" data-fr="20 × 20 po">20 × 20 in</dd>
+        <dt data-en="Price" data-fr="Prix">Price</dt><dd data-en="$500 CAD" data-fr="500 $ CAD">$500 CAD</dd>
+        <dt data-en="Medium" data-fr="Technique">Medium</dt><dd data-en="Acrylic &amp; paint marker on panel" data-fr="Acrylique et marqueur sur panneau">Acrylic &amp; paint marker on panel</dd>
+        <dt data-en="Status" data-fr="Statut">Status</dt><dd data-en="Original, available" data-fr="Original, disponible">Original, available</dd>
       </dl>
-      <div class="acquire reveal"><button class="acquire-btn" type="button" data-artwork="Hunger" data-size="20 × 20 in" data-price="$500 CAD">Acquire this work · $500 CAD</button><span class="acquire-note">Order &amp; shipping handled by the studio</span></div>
-      <p class="reveal">This piece explores the seduction of luxury and the identities we build around desire. The Porsche becomes more than a car. It becomes a mirror. Around it, symbols quietly emerge, each carrying a fragment of a larger story. <strong>Some may speak to you immediately. Others may wait.</strong></p>
+      <div class="acquire reveal"><button class="acquire-btn" type="button" data-artwork="Hunger" data-size="20 × 20 in" data-price="$500 CAD" data-en="Acquire this work · $500 CAD" data-fr="Acquérir cette œuvre · 500 $ CAD">Acquire this work · $500 CAD</button><span class="acquire-note" data-en="Order &amp; shipping handled by the studio" data-fr="Commande et livraison gérées par l&#39;atelier">Order &amp; shipping handled by the studio</span></div>
+      <p class="reveal" data-en="This piece explores the seduction of luxury and the identities we build around desire. The Porsche becomes more than a car. It becomes a mirror. Around it, symbols quietly emerge, each carrying a fragment of a larger story. <strong>Some may speak to you immediately. Others may wait.</strong>" data-fr="Cette œuvre explore la séduction du luxe et les identités que l&#39;on bâtit autour du désir. La Porsche devient plus qu&#39;une voiture. Elle devient un miroir. Autour d&#39;elle, des symboles émergent discrètement, chacun portant un fragment d&#39;une histoire plus vaste. <strong>Certains vous parleront aussitôt. D&#39;autres attendront.</strong>">This piece explores the seduction of luxury and the identities we build around desire. The Porsche becomes more than a car. It becomes a mirror. Around it, symbols quietly emerge, each carrying a fragment of a larger story. <strong>Some may speak to you immediately. Others may wait.</strong></p>
       <div class="fragments reveal">
-        <p class="frag-label">Fragments: choose one</p>
+        <p class="frag-label" data-en="Fragments: choose one" data-fr="Fragments : choisissez-en un">Fragments: choose one</p>
         <div class="frag-row" role="group" aria-label="Fragments">
-          <button class="frag" type="button" aria-pressed="false" data-line="Some desires leave fingerprints.">The Kiss</button>
-          <button class="frag" type="button" aria-pressed="false" data-line="Growing older isn&#39;t the same as growing up.">The Teddy</button>
-          <button class="frag" type="button" aria-pressed="false" data-line="Some moments cannot be undone.">The Grenade</button>
+          <button class="frag" type="button" aria-pressed="false" data-line="Some desires leave fingerprints." data-line-en="Some desires leave fingerprints." data-line-fr="Certains désirs laissent des empreintes." data-en="The Kiss" data-fr="Le Baiser">The Kiss</button>
+          <button class="frag" type="button" aria-pressed="false" data-line="Growing older isn&#39;t the same as growing up." data-line-en="Growing older isn&#39;t the same as growing up." data-line-fr="Vieillir n&#39;est pas la même chose que grandir." data-en="The Teddy" data-fr="L&#39;Ourson">The Teddy</button>
+          <button class="frag" type="button" aria-pressed="false" data-line="Some moments cannot be undone." data-line-en="Some moments cannot be undone." data-line-fr="Certains instants sont irréversibles." data-en="The Grenade" data-fr="La Grenade">The Grenade</button>
         </div>
         <p class="frag-line" aria-live="polite">&nbsp;</p>
       </div>
@@ -743,30 +781,30 @@ a:focus-visible,.frame:focus-visible,button:focus-visible{outline:2px solid var(
          data-caption="III · Mercy · acrylic &amp; paint marker on canvas">
       <img class="art" src="images/painting-01.jpg" alt="Mercy: kneeling figure in warm orange on a cobalt blue field scuffed with gold, surrounded by white line drawings: a crown, hanging scales, an ornate dagger, an ouroboros, a butterfly sealed in a bag, a cracked hand mirror, a key, a black widow, fangs, and the masks of comedy and tragedy." loading="lazy">
       <div class="veil" aria-hidden="true">
-        <span class="zoom">Enlarge +</span>
-        <p class="veil-label">The hidden layer</p>
-        <p>A crown · scales · a dagger · a butterfly sealed in plastic · a cracked mirror · a key · the widow · fangs · both masks. 11:11, the hour of alignment.</p>
+        <span class="zoom" data-en="Enlarge +" data-fr="Agrandir +">Enlarge +</span>
+        <p class="veil-label" data-en="The hidden layer" data-fr="La couche cachée">The hidden layer</p>
+        <p data-en="A crown · scales · a dagger · a butterfly sealed in plastic · a cracked mirror · a key · the widow · fangs · both masks. 11:11, the hour of alignment." data-fr="Une couronne · une balance · une dague · un papillon scellé sous plastique · un miroir fêlé · une clé · la veuve · des crocs · les deux masques. 11:11, l&#39;heure de l&#39;alignement.">A crown · scales · a dagger · a butterfly sealed in plastic · a cracked mirror · a key · the widow · fangs · both masks. 11:11, the hour of alignment.</p>
       </div>
     </div>
     <div class="work-text">
       <span class="work-num reveal">III</span>
       <h3 class="work-title reveal">Mercy</h3>
       <dl class="plaque reveal">
-        <dt>Artist</dt><dd>Amy Lessard</dd>
-        <dt>Series</dt><dd>House of Duality</dd>
-        <dt>Size</dt><dd>28 × 22 in</dd>
-        <dt>Price</dt><dd>$750 CAD</dd>
-        <dt>Medium</dt><dd>Acrylic &amp; paint marker on canvas</dd>
-        <dt>Status</dt><dd>Original, available</dd>
+        <dt data-en="Artist" data-fr="Artiste">Artist</dt><dd>Amy Lessard</dd>
+        <dt data-en="Series" data-fr="Série">Series</dt><dd>House of Duality</dd>
+        <dt data-en="Size" data-fr="Format">Size</dt><dd data-en="28 × 22 in" data-fr="28 × 22 po">28 × 22 in</dd>
+        <dt data-en="Price" data-fr="Prix">Price</dt><dd data-en="$750 CAD" data-fr="750 $ CAD">$750 CAD</dd>
+        <dt data-en="Medium" data-fr="Technique">Medium</dt><dd data-en="Acrylic &amp; paint marker on canvas" data-fr="Acrylique et marqueur sur toile">Acrylic &amp; paint marker on canvas</dd>
+        <dt data-en="Status" data-fr="Statut">Status</dt><dd data-en="Original, available" data-fr="Original, disponible">Original, available</dd>
       </dl>
-      <div class="acquire reveal"><button class="acquire-btn" type="button" data-artwork="Mercy" data-size="28 × 22 in" data-price="$750 CAD">Acquire this work · $750 CAD</button><span class="acquire-note">Order &amp; shipping handled by the studio</span></div>
-      <p class="reveal">The story we show: a body folded into itself, warm and at rest on a field of cobalt scuffed with gold. The story we hide is drawn around it in white: a crown above, justice weighed against desire, a butterfly kept too safe to fly, a mirror that has already cracked.</p>
+      <div class="acquire reveal"><button class="acquire-btn" type="button" data-artwork="Mercy" data-size="28 × 22 in" data-price="$750 CAD" data-en="Acquire this work · $750 CAD" data-fr="Acquérir cette œuvre · 750 $ CAD">Acquire this work · $750 CAD</button><span class="acquire-note" data-en="Order &amp; shipping handled by the studio" data-fr="Commande et livraison gérées par l&#39;atelier">Order &amp; shipping handled by the studio</span></div>
+      <p class="reveal" data-en="The story we show: a body folded into itself, warm and at rest on a field of cobalt scuffed with gold. The story we hide is drawn around it in white: a crown above, justice weighed against desire, a butterfly kept too safe to fly, a mirror that has already cracked." data-fr="L&#39;histoire que l&#39;on montre : un corps replié sur lui-même, chaud et au repos sur un champ de cobalt éraflé d&#39;or. L&#39;histoire que l&#39;on cache est tracée autour de lui en blanc : une couronne au-dessus, la justice pesée contre le désir, un papillon gardé trop en sécurité pour voler, un miroir déjà fêlé.">The story we show: a body folded into itself, warm and at rest on a field of cobalt scuffed with gold. The story we hide is drawn around it in white: a crown above, justice weighed against desire, a butterfly kept too safe to fly, a mirror that has already cracked.</p>
       <div class="fragments reveal">
-        <p class="frag-label">Fragments: choose one</p>
+        <p class="frag-label" data-en="Fragments: choose one" data-fr="Fragments : choisissez-en un">Fragments: choose one</p>
         <div class="frag-row" role="group" aria-label="Fragments">
-          <button class="frag" type="button" aria-pressed="false" data-line="Becoming has no finish line.">Kaizen</button>
-          <button class="frag" type="button" aria-pressed="false" data-line="What repeats can also trap.">The Circle</button>
-          <button class="frag" type="button" aria-pressed="false" data-line="Hunger always leaves evidence.">The Teeth</button>
+          <button class="frag" type="button" aria-pressed="false" data-line="Becoming has no finish line." data-line-en="Becoming has no finish line." data-line-fr="Devenir n&#39;a pas de ligne d&#39;arrivée." data-en="Kaizen" data-fr="Kaizen">Kaizen</button>
+          <button class="frag" type="button" aria-pressed="false" data-line="What repeats can also trap." data-line-en="What repeats can also trap." data-line-fr="Ce qui se répète peut aussi emprisonner." data-en="The Circle" data-fr="Le Cercle">The Circle</button>
+          <button class="frag" type="button" aria-pressed="false" data-line="Hunger always leaves evidence." data-line-en="Hunger always leaves evidence." data-line-fr="La faim laisse toujours des traces." data-en="The Teeth" data-fr="Les Dents">The Teeth</button>
         </div>
         <p class="frag-line" aria-live="polite">&nbsp;</p>
       </div>
@@ -777,23 +815,23 @@ a:focus-visible,.frame:focus-visible,button:focus-visible{outline:2px solid var(
 <!-- ================= TENSIONS ================= -->
 <section class="tensions">
   <div class="shell">
-    <p class="reveal"><span class="a">Softness</span><span class="amp">&amp;</span><span class="b">sharpness</span></p>
-    <p class="reveal" style="--d:.1s"><span class="b">Desire</span><span class="amp">&amp;</span><span class="a">restraint</span></p>
-    <p class="reveal" style="--d:.2s"><span class="a">Dominance</span><span class="amp">&amp;</span><span class="b">vulnerability</span></p>
-    <p class="reveal" style="--d:.3s"><span class="b">Beauty</span><span class="amp">&amp;</span><span class="a">obsession</span></p>
+    <p class="reveal"><span class="a" data-en="Softness" data-fr="Douceur">Softness</span><span class="amp">&amp;</span><span class="b" data-en="sharpness" data-fr="tranchant">sharpness</span></p>
+    <p class="reveal" style="--d:.1s"><span class="b" data-en="Desire" data-fr="Désir">Desire</span><span class="amp">&amp;</span><span class="a" data-en="restraint" data-fr="retenue">restraint</span></p>
+    <p class="reveal" style="--d:.2s"><span class="a" data-en="Dominance" data-fr="Domination">Dominance</span><span class="amp">&amp;</span><span class="b" data-en="vulnerability" data-fr="vulnérabilité">vulnerability</span></p>
+    <p class="reveal" style="--d:.3s"><span class="b" data-en="Beauty" data-fr="Beauté">Beauty</span><span class="amp">&amp;</span><span class="a" data-en="obsession" data-fr="obsession">obsession</span></p>
   </div>
 </section>
 
 <!-- ================= STORY ================= -->
 <section class="story">
   <div class="shell">
-    <p class="eyebrow reveal">The story of the paintings</p>
-    <h2 class="reveal">Symbols that reveal<br><span class="outline">themselves over time</span></h2>
+    <p class="eyebrow reveal" data-en="The story of the paintings" data-fr="La démarche">The story of the paintings</p>
+    <h2 class="reveal" data-en="Symbols that reveal<br><span class=&quot;outline&quot;>themselves over time</span>" data-fr="Des symboles qui se révèlent<br><span class=&quot;outline&quot;>avec le temps</span>">Symbols that reveal<br><span class="outline">themselves over time</span></h2>
     <div class="prose reveal">
-      <p>I create contemporary symbolic paintings that explore the duality of the human experience.</p>
-      <p>Through bold compositions and layered symbolism, I explore the tension between <strong>softness and sharpness</strong>, <strong>desire and restraint</strong>, <strong>dominance and vulnerability</strong>, <strong>beauty and obsession</strong>.</p>
-      <p>Rather than offering a single interpretation, my paintings invite viewers to slow down, look closer, and discover new layers of meaning over time.</p>
-      <p><em>My work is an invitation for anyone who has ever felt too complex to exist within a single identity.</em></p>
+      <p data-en="I create contemporary symbolic paintings that explore the duality of the human experience." data-fr="Je crée des peintures symboliques contemporaines qui explorent la dualité de l&#39;expérience humaine.">I create contemporary symbolic paintings that explore the duality of the human experience.</p>
+      <p data-en="Through bold compositions and layered symbolism, I explore the tension between <strong>softness and sharpness</strong>, <strong>desire and restraint</strong>, <strong>dominance and vulnerability</strong>, <strong>beauty and obsession</strong>." data-fr="À travers des compositions audacieuses et une symbolique en couches, j&#39;explore la tension entre <strong>douceur et tranchant</strong>, <strong>désir et retenue</strong>, <strong>domination et vulnérabilité</strong>, <strong>beauté et obsession</strong>.">Through bold compositions and layered symbolism, I explore the tension between <strong>softness and sharpness</strong>, <strong>desire and restraint</strong>, <strong>dominance and vulnerability</strong>, <strong>beauty and obsession</strong>.</p>
+      <p data-en="Rather than offering a single interpretation, my paintings invite viewers to slow down, look closer, and discover new layers of meaning over time." data-fr="Plutôt que d&#39;offrir une seule interprétation, mes toiles invitent à ralentir, à regarder de plus près et à découvrir de nouvelles couches de sens avec le temps.">Rather than offering a single interpretation, my paintings invite viewers to slow down, look closer, and discover new layers of meaning over time.</p>
+      <p data-en="<em>My work is an invitation for anyone who has ever felt too complex to exist within a single identity.</em>" data-fr="<em>Mon travail est une invitation pour quiconque s&#39;est déjà senti trop complexe pour exister dans une seule identité.</em>"><em>My work is an invitation for anyone who has ever felt too complex to exist within a single identity.</em></p>
     </div>
   </div>
 </section>
@@ -802,14 +840,14 @@ a:focus-visible,.frame:focus-visible,button:focus-visible{outline:2px solid var(
 <section class="about" id="about">
   <div class="shell">
     <div class="col">
-      <p class="eyebrow reveal">About me</p>
-      <h2 class="reveal">Contradiction is one of the most honest parts of being human.</h2>
-      <p class="pull reveal">Painting became the place where they stopped fighting.</p>
+      <p class="eyebrow reveal" data-en="About me" data-fr="À propos">About me</p>
+      <h2 class="reveal" data-en="Contradiction is one of the most honest parts of being human." data-fr="La contradiction est l&#39;une des parts les plus honnêtes de notre humanité.">Contradiction is one of the most honest parts of being human.</h2>
+      <p class="pull reveal" data-en="Painting became the place where they stopped fighting." data-fr="La peinture est devenue le lieu où elles ont cessé de se combattre.">Painting became the place where they stopped fighting.</p>
     </div>
     <div class="col prose">
-      <p class="reveal">I've never fit comfortably into a single identity. <strong>Strength and sensitivity. Control and surrender. Logic and emotion.</strong> For years, these parts of myself felt like they were in constant conflict.</p>
-      <p class="reveal">Every canvas allows opposing forces to exist together, to dance instead of compete. Symbols, colors, and recurring motifs become metaphors for the internal landscapes we rarely put into words.</p>
-      <p class="reveal">I want each piece to feel different every time someone looks at it. <strong>The longer you spend with it, the more it reveals.</strong></p>
+      <p class="reveal" data-en="I've never fit comfortably into a single identity. <strong>Strength and sensitivity. Control and surrender. Logic and emotion.</strong> For years, these parts of myself felt like they were in constant conflict." data-fr="Je ne me suis jamais sentie à l&#39;aise dans une seule identité. <strong>Force et sensibilité. Contrôle et abandon. Logique et émotion.</strong> Pendant des années, ces parts de moi semblaient en conflit constant.">I've never fit comfortably into a single identity. <strong>Strength and sensitivity. Control and surrender. Logic and emotion.</strong> For years, these parts of myself felt like they were in constant conflict.</p>
+      <p class="reveal" data-en="Every canvas allows opposing forces to exist together, to dance instead of compete. Symbols, colors, and recurring motifs become metaphors for the internal landscapes we rarely put into words." data-fr="Chaque toile permet à des forces opposées d&#39;exister ensemble, de danser plutôt que de rivaliser. Symboles, couleurs et motifs récurrents deviennent des métaphores des paysages intérieurs que l&#39;on met rarement en mots.">Every canvas allows opposing forces to exist together, to dance instead of compete. Symbols, colors, and recurring motifs become metaphors for the internal landscapes we rarely put into words.</p>
+      <p class="reveal" data-en="I want each piece to feel different every time someone looks at it. <strong>The longer you spend with it, the more it reveals.</strong>" data-fr="Je veux que chaque œuvre semble différente à chaque regard. <strong>Plus on y passe de temps, plus elle se révèle.</strong>">I want each piece to feel different every time someone looks at it. <strong>The longer you spend with it, the more it reveals.</strong></p>
       <div class="signature reveal"><svg viewBox="0 0 400 535" class="sig" aria-hidden="true"><use href="#sigmark"/></svg><span>Amy Lessard</span></div>
     </div>
   </div>
@@ -818,38 +856,42 @@ a:focus-visible,.frame:focus-visible,button:focus-visible{outline:2px solid var(
 <!-- ================= CONTACT ================= -->
 <section class="contact" id="contact">
   <div class="shell">
-    <h2 class="reveal">Look <span class="outline">closer</span></h2>
-    <p class="reveal">Every painting is an original, one of a kind. Use the <strong>Acquire</strong> button on any work to open a short order form; the studio confirms availability and sends a secure invoice with taxes and shipping. Your original is reserved the moment you submit it.</p>
+    <h2 class="reveal" data-en="Look <span class=&quot;outline&quot;>closer</span>" data-fr="Regardez <span class=&quot;outline&quot;>de plus près</span>">Look <span class="outline">closer</span></h2>
+    <p class="reveal" data-en="Every painting is an original, one of a kind. Use the <strong>Acquire</strong> button on any work to open a short order form; the studio confirms availability and sends a secure invoice with taxes and shipping. Your original is reserved the moment you submit it." data-fr="Chaque toile est un original, une pièce unique. Utilisez le bouton <strong>Acquérir</strong> sur une œuvre pour ouvrir un court bon de commande ; l&#39;atelier confirme la disponibilité et envoie une facture sécurisée avec taxes et livraison. Votre original est réservé dès l&#39;envoi.">Every painting is an original, one of a kind. Use the <strong>Acquire</strong> button on any work to open a short order form; the studio confirms availability and sends a secure invoice with taxes and shipping. Your original is reserved the moment you submit it.</p>
     <ol class="steps reveal">
-      <li><span>1</span>Choose a work and send your request</li>
-      <li><span>2</span>Receive a secure invoice from the studio</li>
-      <li><span>3</span>Your original is packed and shipped</li>
+      <li data-en="<span>1</span>Choose a work and send your request" data-fr="<span>1</span>Choisissez une œuvre et envoyez votre demande"><span>1</span>Choose a work and send your request</li>
+      <li data-en="<span>2</span>Receive a secure invoice from the studio" data-fr="<span>2</span>Recevez une facture sécurisée de l&#39;atelier"><span>2</span>Receive a secure invoice from the studio</li>
+      <li data-en="<span>3</span>Your original is packed and shipped" data-fr="<span>3</span>Votre original est emballé et expédié"><span>3</span>Your original is packed and shipped</li>
     </ol>
-    <a class="btn reveal" href="mailto:joachim.wodo@gmail.com?subject=House%20of%20Duality%20inquiry">Contact the studio</a>
-    <p class="ship-note reveal">Commissions welcome · Ships from Canada · Payment by secure invoice</p>
+    <a class="btn reveal" href="mailto:studio@houseofduality.ca?subject=House%20of%20Duality%20inquiry" data-en="Contact the studio" data-fr="Écrire à l&#39;atelier">Contact the studio</a>
+    <div class="channels reveal">
+      <a href="mailto:studio@houseofduality.ca">studio@houseofduality.ca</a>
+      <a href="tel:+18733393309">+1 (873) 339-3309</a>
+    </div>
+    <p class="ship-note reveal" data-en="Commissions welcome · Ships from Canada · Payment by secure invoice" data-fr="Commandes sur mesure bienvenues · Expédition depuis le Canada · Paiement par facture sécurisée">Commissions welcome · Ships from Canada · Payment by secure invoice</p>
   </div>
 </section>
 
 <footer>
   <span>© 2026 Amy Lessard · House of Duality</span>
-  <span>There are always two stories.</span>
+  <span data-en="There are always two stories." data-fr="Il y a toujours deux histoires.">There are always two stories.</span>
 </footer>
 
 <!-- ================= ORDER MODAL ================= -->
 <div class="order" id="order" role="dialog" aria-modal="true" aria-labelledby="orderTitle">
   <div class="order-card">
-    <button class="order-close" id="orderClose" type="button" aria-label="Close">Close ✕</button>
+    <button class="order-close" id="orderClose" type="button" aria-label="Close / Fermer" data-en="Close ✕" data-fr="Fermer ✕">Close ✕</button>
 
     <div class="order-form-wrap" id="orderFormWrap">
-      <span class="order-eyebrow">Acquire an original · House of Duality</span>
-      <h3 id="orderTitle">Order details</h3>
+      <span class="order-eyebrow" data-en="Acquire an original · House of Duality" data-fr="Acquérir un original · House of Duality">Acquire an original · House of Duality</span>
+      <h3 id="orderTitle" data-en="Order details" data-fr="Détails de la commande">Order details</h3>
       <div class="order-summary">
-        <span>Artwork · <strong id="sumArt">—</strong></span>
+        <span><span data-en="Artwork" data-fr="Œuvre">Artwork</span> · <strong id="sumArt">—</strong></span>
         <span id="sumSize">—</span>
         <span class="price" id="sumPrice">—</span>
       </div>
 
-      <form action="https://formsubmit.co/joachim.wodo@gmail.com" method="POST" id="orderForm">
+      <form action="https://formsubmit.co/studio@houseofduality.ca" method="POST" id="orderForm">
         <input type="hidden" name="_subject" value="New order — House of Duality">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="false">
@@ -859,48 +901,48 @@ a:focus-visible,.frame:focus-visible,button:focus-visible{outline:2px solid var(
         <input type="hidden" name="Price" id="fPrice" value="">
 
         <div class="row">
-          <label>Full name<input type="text" name="Full name" required autocomplete="name"></label>
-          <label>Email<input type="email" name="Email" required autocomplete="email"></label>
+          <label><span data-en="Full name" data-fr="Nom complet">Full name</span><input type="text" name="Full name" required autocomplete="name"></label>
+          <label><span data-en="Email" data-fr="Courriel">Email</span><input type="email" name="Email" required autocomplete="email"></label>
         </div>
         <div class="row">
-          <label>Phone<input type="tel" name="Phone" autocomplete="tel"></label>
-          <label>Country<input type="text" name="Country" value="Canada" required autocomplete="country-name"></label>
+          <label><span data-en="Phone" data-fr="Téléphone">Phone</span><input type="tel" name="Phone" autocomplete="tel"></label>
+          <label><span data-en="Country" data-fr="Pays">Country</span><input type="text" name="Country" value="Canada" required autocomplete="country-name"></label>
         </div>
-        <label>Shipping address<input type="text" name="Address" required autocomplete="address-line1" placeholder="Street and number"></label>
+        <label><span data-en="Shipping address" data-fr="Adresse de livraison">Shipping address</span><input type="text" name="Address" required autocomplete="address-line1" placeholder="Street and number" data-en-ph="Street and number" data-fr-ph="Rue et numéro"></label>
         <div class="row">
-          <label>City<input type="text" name="City" required autocomplete="address-level2"></label>
-          <label>Province / State<input type="text" name="Province" required autocomplete="address-level1"></label>
+          <label><span data-en="City" data-fr="Ville">City</span><input type="text" name="City" required autocomplete="address-level2"></label>
+          <label><span data-en="Province / State" data-fr="Province">Province / State</span><input type="text" name="Province" required autocomplete="address-level1"></label>
         </div>
         <div class="row">
-          <label>Postal / ZIP code<input type="text" name="Postal code" required autocomplete="postal-code"></label>
-          <label>Preferred payment
+          <label><span data-en="Postal / ZIP code" data-fr="Code postal">Postal / ZIP code</span><input type="text" name="Postal code" required autocomplete="postal-code"></label>
+          <label><span data-en="Preferred payment" data-fr="Mode de paiement souhaité">Preferred payment</span>
             <select name="Preferred payment">
-              <option>Interac e-Transfer</option>
-              <option>Credit card (invoice link)</option>
-              <option>PayPal</option>
-              <option>Other / not sure</option>
+              <option value="Interac e-Transfer" data-en="Interac e-Transfer" data-fr="Virement Interac">Interac e-Transfer</option>
+              <option value="Credit card (invoice link)" data-en="Credit card (invoice link)" data-fr="Carte de crédit (lien de facture)">Credit card (invoice link)</option>
+              <option value="PayPal" data-en="PayPal" data-fr="PayPal">PayPal</option>
+              <option value="Other / not sure" data-en="Other / not sure" data-fr="Autre / je ne sais pas">Other / not sure</option>
             </select>
           </label>
         </div>
-        <label>Message to the studio (optional)<textarea name="Message" placeholder="Anything the studio should know"></textarea></label>
+        <label><span data-en="Message to the studio (optional)" data-fr="Message à l&#39;atelier (facultatif)">Message to the studio (optional)</span><textarea name="Message" placeholder="Anything the studio should know" data-en-ph="Anything the studio should know" data-fr-ph="Ce que l&#39;atelier devrait savoir"></textarea></label>
 
-        <button class="order-submit" type="submit">Send my order</button>
-        <p class="order-fineprint">No payment is taken here. The studio will confirm availability and send you a secure invoice with the total, taxes and shipping. Your original is reserved the moment you send this.</p>
+        <button class="order-submit" type="submit" data-en="Send my order" data-fr="Envoyer ma commande">Send my order</button>
+        <p class="order-fineprint" data-en="No payment is taken here. The studio will confirm availability and send you a secure invoice with the total, taxes and shipping. Your original is reserved the moment you send this." data-fr="Aucun paiement n&#39;est prélevé ici. L&#39;atelier confirmera la disponibilité et vous enverra une facture sécurisée avec le total, les taxes et la livraison. Votre original est réservé dès l&#39;envoi.">No payment is taken here. The studio will confirm availability and send you a secure invoice with the total, taxes and shipping. Your original is reserved the moment you send this.</p>
       </form>
     </div>
 
     <div class="order-success" id="orderSuccess">
       <div class="tick">✓</div>
-      <h3>Order received</h3>
-      <p>Thank you. The studio has your request for <strong id="okArt">this work</strong> and will reply shortly with your invoice and shipping details.</p>
-      <button class="order-submit" type="button" id="orderDone" style="align-self:center">Close</button>
+      <h3 data-en="Order received" data-fr="Commande reçue">Order received</h3>
+      <p data-en="Thank you. The studio has your request for <strong id=&quot;okArt&quot;>this work</strong> and will reply shortly with your invoice and shipping details." data-fr="Merci. L&#39;atelier a bien reçu votre demande pour <strong id=&quot;okArt&quot;>cette œuvre</strong> et vous répondra sous peu avec votre facture et les détails de livraison.">Thank you. The studio has your request for <strong id="okArt">this work</strong> and will reply shortly with your invoice and shipping details.</p>
+      <button class="order-submit" type="button" id="orderDone" style="align-self:center" data-en="Close" data-fr="Fermer">Close</button>
     </div>
   </div>
 </div>
 
 <!-- ================= LIGHTBOX ================= -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Artwork view">
-  <button class="lb-close" id="lbClose">Close ✕</button>
+  <button class="lb-close" id="lbClose" data-en="Close ✕" data-fr="Fermer ✕">Close ✕</button>
   <div class="lb-stage" id="lbStage"></div>
   <p class="lb-cap" id="lbCap"></p>
 </div>
@@ -912,6 +954,37 @@ window.addEventListener('load', function(){
   requestAnimationFrame(function(){ c.classList.add('open'); });
   setTimeout(function(){ c.remove(); }, 2200);
 });
+
+// Bilingual engine (FR / EN)
+(function(){
+  var LANG = 'en';
+  function apply(l){
+    LANG = l;
+    document.documentElement.setAttribute('lang', l);
+    document.querySelectorAll('[data-fr]').forEach(function(el){
+      var v = el.getAttribute('data-'+l);
+      if(v !== null && el.innerHTML !== v) el.innerHTML = v;
+    });
+    document.querySelectorAll('[data-fr-ph]').forEach(function(el){
+      el.setAttribute('placeholder', el.getAttribute('data-'+l+'-ph') || '');
+    });
+    var tog = document.getElementById('langtog');
+    if(tog) tog.textContent = (l === 'fr' ? 'EN' : 'FR');
+    // refresh any revealed fragment line in the new language
+    document.querySelectorAll('.frag[aria-pressed="true"]').forEach(function(b){
+      var box = b.closest('.fragments'); if(!box) return;
+      var line = box.querySelector('.frag-line');
+      line.textContent = b.getAttribute('data-line-'+l) || b.getAttribute('data-line');
+    });
+    try{ localStorage.setItem('hod-lang', l); }catch(e){}
+  }
+  var saved; try{ saved = localStorage.getItem('hod-lang'); }catch(e){}
+  var nav = (navigator.language || navigator.userLanguage || 'fr').slice(0,2).toLowerCase();
+  apply(saved || (nav === 'en' ? 'en' : 'fr'));
+  var tog = document.getElementById('langtog');
+  if(tog) tog.addEventListener('click', function(){ apply(LANG === 'fr' ? 'en' : 'fr'); });
+  window.__lang = function(){ return LANG; };
+})();
 
 // Fragments — each symbol carries a line of the larger story
 document.querySelectorAll('.fragments').forEach(function(box){
@@ -926,7 +999,8 @@ document.querySelectorAll('.fragments').forEach(function(box){
       if (!isOn){
         btn.setAttribute('aria-pressed','true');
         setTimeout(function(){
-          line.textContent = btn.getAttribute('data-line');
+          var L = (window.__lang ? window.__lang() : 'en');
+          line.textContent = btn.getAttribute('data-line-'+L) || btn.getAttribute('data-line');
           line.classList.add('on');
         }, 160);
       }
@@ -946,9 +1020,10 @@ document.querySelectorAll('.fragments').forEach(function(box){
   function open(btn){
     lastFocus = btn;
     var art = btn.getAttribute('data-artwork'), size = btn.getAttribute('data-size'), price = btn.getAttribute('data-price');
+    var fr = (window.__lang && window.__lang()==='fr');
     document.getElementById('sumArt').textContent = art;
-    document.getElementById('sumSize').textContent = size;
-    document.getElementById('sumPrice').textContent = price;
+    document.getElementById('sumSize').textContent = fr ? size.replace(/\bin\b/, 'po') : size;
+    document.getElementById('sumPrice').textContent = fr ? price.replace(/^\$(\d+)\s*CAD$/, '$1 $ CAD') : price;
     document.getElementById('fArt').value = art;
     document.getElementById('fSize').value = size;
     document.getElementById('fPrice').value = price;
@@ -973,7 +1048,7 @@ document.querySelectorAll('.fragments').forEach(function(box){
     e.preventDefault();
     var obj = {}; new FormData(form).forEach(function(v,k){ obj[k]=v; });
     var btn = form.querySelector('.order-submit'); btn.textContent = 'Sending…';
-    fetch('https://formsubmit.co/ajax/joachim.wodo@gmail.com', {
+    fetch('https://formsubmit.co/ajax/studio@houseofduality.ca', {
         method:'POST',
         headers:{'Content-Type':'application/json','Accept':'application/json'},
         body:JSON.stringify(obj)
