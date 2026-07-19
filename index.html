@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>House of Duality · Amy Lessard</title>
+<title>The Beauty of Contradiction · Amy Lessard</title>
 <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="18" fill="%237D160E"/><g fill="none" stroke="%23F7F1E3" stroke-width="5" stroke-linecap="square"><path d="M50 22 L29 88"/><path d="M50 22 C51 39 63 51 77 54"/><path d="M24 57 L63 55 L69 87"/><path d="M25 60 C40 70 57 80 69 87"/></g></svg>'>
 <meta name="description" content="House of Duality, by Amy Lessard. The beauty of contradiction: contemporary symbolic paintings exploring the duality of the human experience.">
 <style>
@@ -143,8 +143,8 @@ h1,h2,h3{font-family:var(--font-display);font-weight:400;text-wrap:balance}
     var(--ink);
 }
 .hero-title{
-  font-size:clamp(2.8rem, 10.5vw, 8.6rem);
-  line-height:.94;
+  font-size:clamp(2.2rem, 7.8vw, 6.6rem);
+  line-height:.98;
   letter-spacing:.005em;
   text-transform:uppercase;
   display:flex;flex-direction:column;
@@ -240,11 +240,11 @@ section{position:relative}
   max-width:1240px;margin-inline:auto;
   padding:clamp(5rem,12vh,8rem) var(--pad);
 }
-.work:nth-of-type(even){direction:rtl}
-.work:nth-of-type(even)>*{direction:ltr}
+article:nth-of-type(even) .work{direction:rtl}
+article:nth-of-type(even) .work>*{direction:ltr}
 @media(max-width:880px){
   .work{grid-template-columns:1fr}
-  .work:nth-of-type(even){direction:ltr}
+  article:nth-of-type(even) .work{direction:ltr}
 }
 
 .field-cobalt {background:linear-gradient(180deg,var(--ink) 0%,#15206b 18%,#15206b 82%,var(--ink) 100%)}
@@ -496,11 +496,11 @@ a:focus-visible,.frame:focus-visible,button:focus-visible{outline:2px solid var(
 <!-- ================= HERO ================= -->
 <header class="hero" id="top">
   <p class="eyebrow">Amy Lessard · Contemporary symbolic painting</p>
-  <h1 class="hero-title" aria-label="House of Duality">
-    <span class="w1">House</span>
-    <span class="w2">of Duality</span>
+  <h1 class="hero-title" aria-label="The Beauty of Contradiction">
+    <span class="w1">The Beauty</span>
+    <span class="w2">of Contradiction</span>
   </h1>
-  <p class="hero-sub"><em>The beauty of contradiction.</em></p>
+  <p class="hero-sub">We are never just one thing. <em>Neither are my paintings.</em></p>
 
   <div class="sigmark" aria-hidden="true">
     <svg viewBox="0 0 400 535" class="sig"><use href="#sigmark"/></svg>
@@ -521,12 +521,13 @@ a:focus-visible,.frame:focus-visible,button:focus-visible{outline:2px solid var(
 <!-- ================= PHILOSOPHY ================= -->
 <section class="philosophy" id="philosophy">
   <div class="shell">
-    <p class="eyebrow reveal">Philosophy</p>
-    <p class="poem" aria-label="We are never just one thing. Neither are my paintings.">
-      <span class="shown reveal">We are never</span>
-      <span class="shown reveal" style="--d:.1s">just one thing.</span>
-      <span class="hidden-line reveal" style="--d:.25s">Neither are</span>
-      <span class="hidden-line reveal" style="--d:.35s">my paintings.</span>
+    <p class="eyebrow reveal">House of Duality · Vocabulary</p>
+    <div class="prose reveal"><p>Some paintings contain recurring fragments that form part of the visual language of House of Duality.</p></div>
+    <p class="poem" aria-label="Some return. Others appear only once. They are not meant to be solved. They exist to be interpreted.">
+      <span class="shown reveal">Some return.</span>
+      <span class="shown reveal" style="--d:.1s">Others appear only once.</span>
+      <span class="hidden-line reveal" style="--d:.25s">They are not meant to be solved.</span>
+      <span class="between reveal" style="--d:.4s">They exist to be interpreted.</span>
     </p>
   </div>
 </section>
@@ -535,40 +536,40 @@ a:focus-visible,.frame:focus-visible,button:focus-visible{outline:2px solid var(
 <section class="works-intro" id="works">
   <div class="shell">
     <p class="eyebrow reveal">Selected works</p>
-    <div class="prose reveal">
-      <p>Some paintings contain recurring fragments that form part of the visual language of House of Duality. Some return. Others appear only once. <strong>They are not meant to be solved. They exist to be interpreted.</strong></p>
-    </div>
   </div>
 </section>
 
 <!-- Work I -->
-<article class="field-cobalt">
+<article class="field-flame">
   <div class="work">
-    <div class="frame reveal" tabindex="0" role="button" aria-label="View Mercy full screen"
-         data-caption="I · Mercy · acrylic &amp; paint marker on canvas">
-      <img class="art" src="images/painting-01.jpg" alt="Mercy: kneeling figure in warm orange on a cobalt blue field scuffed with gold, surrounded by white line drawings: a crown, hanging scales, an ornate dagger, an ouroboros, a butterfly sealed in a bag, a cracked hand mirror, a key, a black widow, fangs, and the masks of comedy and tragedy." loading="lazy">
+    <div class="frame reveal" tabindex="0" role="button" aria-label="View Blues full screen"
+         data-caption="I · Blues · acrylic &amp; paint marker on canvas">
+      <img class="art" src="images/painting-03.jpg" alt="Blues: a torso in deep cobalt blue standing on a fiery red, orange and yellow impasto field, surrounded by white line drawings: a Venus symbol, the word FUCK mirrored, a bunny, cherries, a spider web, a tooth, swallows, the characters for Virgo, a dagger, dice, an eye, a rose, a lighter, an ace of hearts, a butterfly, a bow and arrow, a serpent, the number 555 and the word HE:LL." loading="lazy">
       <div class="veil" aria-hidden="true">
         <span class="zoom">Enlarge +</span>
         <p class="veil-label">The hidden layer</p>
-        <p>A crown · scales · a dagger · a butterfly sealed in plastic · a cracked mirror · a key · the widow · fangs · both masks. 11:11, the hour of alignment.</p>
+        <p>Venus · swallows · a web · a tooth · dice · the open eye · a rose · the ace · a bow drawn back · a serpent. 5:55, the hour of change.</p>
       </div>
     </div>
     <div class="work-text">
       <span class="work-num reveal">I</span>
-      <h3 class="work-title reveal">Mercy</h3>
+      <h3 class="work-title reveal">Blues</h3>
       <dl class="plaque reveal">
         <dt>Artist</dt><dd>Amy Lessard</dd>
         <dt>Series</dt><dd>House of Duality</dd>
+        <dt>Size</dt><dd>26 × 20 in</dd>
+        <dt>Price</dt><dd>$750 CAD</dd>
         <dt>Medium</dt><dd>Acrylic &amp; paint marker on canvas</dd>
-        <dt>Status</dt><dd>Available on request</dd>
+        <dt>Status</dt><dd>Original, available</dd>
       </dl>
-      <p class="reveal">The story we show: a body folded into itself, warm and at rest on a field of cobalt scuffed with gold. The story we hide is drawn around it in white: a crown above, justice weighed against desire, a butterfly kept too safe to fly, a mirror that has already cracked.</p>
+      <p class="reveal">A body of cold flame standing in a burning field, the exact inversion of the first canvas. Gentleness and violence share the same wall here: doves beside a blade, a rose beside dice, an open eye that never blinks.</p>
       <div class="fragments reveal">
-        <p class="frag-label">Fragments: choose one</p>
-        <div class="frag-row" role="group" aria-label="Fragments">
-          <button class="frag" type="button" aria-pressed="false" data-line="Becoming has no finish line.">Kaizen</button>
-          <button class="frag" type="button" aria-pressed="false" data-line="What repeats can also trap.">The Circle</button>
-          <button class="frag" type="button" aria-pressed="false" data-line="Hunger always leaves evidence.">The Teeth</button>
+        <p class="frag-label">Vocabulary: choose one</p>
+        <div class="frag-row" role="group" aria-label="Vocabulary">
+          <button class="frag" type="button" aria-pressed="false" data-line="Every choice leaves another thread behind.">The Web</button>
+          <button class="frag" type="button" aria-pressed="false" data-line="Gentleness isn&#39;t the absence of strength.">The Dove</button>
+          <button class="frag" type="button" aria-pressed="false" data-line="Not every transformation is gentle.">The Blade</button>
+          <button class="frag" type="button" aria-pressed="false" data-line="Creation begins where certainty ends.">Venus</button>
         </div>
         <p class="frag-line" aria-live="polite">&nbsp;</p>
       </div>
@@ -594,8 +595,10 @@ a:focus-visible,.frame:focus-visible,button:focus-visible{outline:2px solid var(
       <dl class="plaque reveal">
         <dt>Artist</dt><dd>Amy Lessard</dd>
         <dt>Series</dt><dd>House of Duality</dd>
+        <dt>Size</dt><dd>20 × 20 in</dd>
+        <dt>Price</dt><dd>$500 CAD</dd>
         <dt>Medium</dt><dd>Acrylic &amp; paint marker on panel</dd>
-        <dt>Status</dt><dd>Available on request</dd>
+        <dt>Status</dt><dd>Original, available</dd>
       </dl>
       <p class="reveal">This piece explores the seduction of luxury and the identities we build around desire. The Porsche becomes more than a car. It becomes a mirror. Around it, symbols quietly emerge, each carrying a fragment of a larger story. <strong>Some may speak to you immediately. Others may wait.</strong></p>
       <div class="fragments reveal">
@@ -612,34 +615,35 @@ a:focus-visible,.frame:focus-visible,button:focus-visible{outline:2px solid var(
 </article>
 
 <!-- Work III -->
-<article class="field-flame">
+<article class="field-cobalt">
   <div class="work">
-    <div class="frame reveal" tabindex="0" role="button" aria-label="View Blues full screen"
-         data-caption="III · Blues · acrylic &amp; paint marker on canvas">
-      <img class="art" src="images/painting-03.jpg" alt="Blues: a torso in deep cobalt blue standing on a fiery red, orange and yellow impasto field, surrounded by white line drawings: a Venus symbol, the word FUCK mirrored, a bunny, cherries, a spider web, a tooth, swallows, the characters for Virgo, a dagger, dice, an eye, a rose, a lighter, an ace of hearts, a butterfly, a bow and arrow, a serpent, the number 555 and the word HE:LL." loading="lazy">
+    <div class="frame reveal" tabindex="0" role="button" aria-label="View Mercy full screen"
+         data-caption="III · Mercy · acrylic &amp; paint marker on canvas">
+      <img class="art" src="images/painting-01.jpg" alt="Mercy: kneeling figure in warm orange on a cobalt blue field scuffed with gold, surrounded by white line drawings: a crown, hanging scales, an ornate dagger, an ouroboros, a butterfly sealed in a bag, a cracked hand mirror, a key, a black widow, fangs, and the masks of comedy and tragedy." loading="lazy">
       <div class="veil" aria-hidden="true">
         <span class="zoom">Enlarge +</span>
         <p class="veil-label">The hidden layer</p>
-        <p>Venus · swallows · a web · a tooth · dice · the open eye · a rose · the ace · a bow drawn back · a serpent. 5:55, the hour of change.</p>
+        <p>A crown · scales · a dagger · a butterfly sealed in plastic · a cracked mirror · a key · the widow · fangs · both masks. 11:11, the hour of alignment.</p>
       </div>
     </div>
     <div class="work-text">
       <span class="work-num reveal">III</span>
-      <h3 class="work-title reveal">Blues</h3>
+      <h3 class="work-title reveal">Mercy</h3>
       <dl class="plaque reveal">
         <dt>Artist</dt><dd>Amy Lessard</dd>
         <dt>Series</dt><dd>House of Duality</dd>
+        <dt>Size</dt><dd>28 × 22 in</dd>
+        <dt>Price</dt><dd>$950 CAD</dd>
         <dt>Medium</dt><dd>Acrylic &amp; paint marker on canvas</dd>
-        <dt>Status</dt><dd>Available on request</dd>
+        <dt>Status</dt><dd>Original, available</dd>
       </dl>
-      <p class="reveal">A body of cold flame standing in a burning field, the exact inversion of the first canvas. Gentleness and violence share the same wall here: doves beside a blade, a rose beside dice, an open eye that never blinks.</p>
+      <p class="reveal">The story we show: a body folded into itself, warm and at rest on a field of cobalt scuffed with gold. The story we hide is drawn around it in white: a crown above, justice weighed against desire, a butterfly kept too safe to fly, a mirror that has already cracked.</p>
       <div class="fragments reveal">
-        <p class="frag-label">Vocabulary: choose one</p>
-        <div class="frag-row" role="group" aria-label="Vocabulary">
-          <button class="frag" type="button" aria-pressed="false" data-line="Every choice leaves another thread behind.">The Web</button>
-          <button class="frag" type="button" aria-pressed="false" data-line="Gentleness isn&#39;t the absence of strength.">The Dove</button>
-          <button class="frag" type="button" aria-pressed="false" data-line="Not every transformation is gentle.">The Blade</button>
-          <button class="frag" type="button" aria-pressed="false" data-line="Creation begins where certainty ends.">Venus</button>
+        <p class="frag-label">Fragments: choose one</p>
+        <div class="frag-row" role="group" aria-label="Fragments">
+          <button class="frag" type="button" aria-pressed="false" data-line="Becoming has no finish line.">Kaizen</button>
+          <button class="frag" type="button" aria-pressed="false" data-line="What repeats can also trap.">The Circle</button>
+          <button class="frag" type="button" aria-pressed="false" data-line="Hunger always leaves evidence.">The Teeth</button>
         </div>
         <p class="frag-line" aria-live="polite">&nbsp;</p>
       </div>
