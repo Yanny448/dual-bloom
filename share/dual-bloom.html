@@ -467,6 +467,85 @@ footer{
   color:var(--chalk-dim);
 }
 
+/* ---------- order modal ---------- */
+.order{
+  position:fixed;inset:0;z-index:160;display:none;
+  align-items:flex-start;justify-content:center;
+  padding:clamp(1rem,4vw,3rem) 1rem;
+  background:rgba(35,6,3,.94);overflow-y:auto;
+}
+.order.on{display:flex}
+.order-card{
+  width:100%;max-width:640px;margin:auto;
+  background:var(--ink);
+  border:1px solid rgba(247,241,227,.22);
+  box-shadow:0 40px 120px rgba(0,0,0,.7);
+  padding:clamp(1.6rem,4vw,2.6rem);
+  position:relative;
+}
+.order-close{
+  position:absolute;top:1rem;right:1.2rem;
+  font-family:var(--font-utility);font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--chalk-dim);padding:.5rem;
+}
+.order-close:hover{color:var(--chalk)}
+.order h3{font-family:var(--font-display);font-size:clamp(1.7rem,4vw,2.4rem);color:var(--chalk)}
+.order .order-eyebrow{
+  font-family:var(--font-utility);font-size:.62rem;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--peach);margin-bottom:.5rem;display:block;
+}
+.order-summary{
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  border:1px solid rgba(247,241,227,.22);
+  padding:.9rem 1.1rem;margin:1.1rem 0 1.4rem;
+  font-family:var(--font-utility);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--chalk-dim);
+}
+.order-summary strong{color:var(--chalk);font-weight:600}
+.order-summary .price{color:var(--peach);font-weight:600}
+.order form{display:flex;flex-direction:column;gap:1rem}
+.order .row{display:flex;gap:1rem;flex-wrap:wrap}
+.order .row>*{flex:1 1 46%}
+.order label{
+  display:flex;flex-direction:column;gap:.35rem;
+  font-family:var(--font-utility);font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--chalk-dim);
+}
+.order input,.order select,.order textarea{
+  font-family:var(--font-body);font-size:1rem;
+  color:var(--chalk);background:rgba(247,241,227,.05);
+  border:1px solid rgba(247,241,227,.3);
+  padding:.7rem .8rem;width:100%;
+  transition:border-color .25s,background .25s;
+}
+.order input:focus,.order select:focus,.order textarea:focus{
+  outline:none;border-color:var(--peach);background:rgba(247,241,227,.08);
+}
+.order select{appearance:none;cursor:pointer}
+.order select option{color:#111;background:#f3ede1}
+.order textarea{resize:vertical;min-height:3.5rem}
+.order .hp{position:absolute;left:-5000px}
+.order-submit{
+  margin-top:.4rem;align-self:flex-start;
+  font-family:var(--font-utility);font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--ink);background:var(--chalk);border:0;cursor:pointer;
+  padding:.95rem 2rem;display:inline-flex;align-items:center;gap:.8rem;
+  transition:background .3s,color .3s,gap .3s;
+}
+.order-submit::after{content:"→"}
+.order-submit:hover,.order-submit:focus-visible{background:var(--peach);gap:1.15rem}
+.order-fineprint{
+  font-family:var(--font-utility);font-size:.6rem;letter-spacing:.16em;line-height:1.7;
+  text-transform:uppercase;color:var(--chalk-dim);
+}
+.order-success{display:none;flex-direction:column;gap:1rem;text-align:center;padding:1.5rem 0}
+.order-success.on{display:flex}
+.order-success .tick{
+  width:3.4rem;height:3.4rem;margin:0 auto;border-radius:50%;
+  border:1px solid var(--peach);display:grid;place-items:center;color:var(--peach);
+  font-size:1.4rem;
+}
+.order-success h3{margin-bottom:.3rem}
+.order-success p{color:var(--chalk-dim);max-width:38ch;margin:0 auto}
+
 /* ---------- lightbox ---------- */
 .lightbox{
   position:fixed;inset:0;z-index:150;
@@ -603,7 +682,7 @@ a:focus-visible,.frame:focus-visible,button:focus-visible{outline:2px solid var(
         <dt>Medium</dt><dd>Acrylic &amp; paint marker on canvas</dd>
         <dt>Status</dt><dd>Original, available</dd>
       </dl>
-      <div class="acquire reveal"><a class="acquire-btn" href="mailto:joachim.wodo@gmail.com?subject=Acquire%20Blues%20%E2%80%94%20House%20of%20Duality&amp;body=Hello%20Amy%2C%0A%0AI%20would%20like%20to%20acquire%20%22Blues%22%20(26%20x%2020%20in%2C%20%24950%20CAD).%0APlease%20send%20me%20the%20details%20to%20complete%20the%20purchase%20(payment%20and%20shipping).%0A%0AThank%20you%2C%0A">Acquire this work · $950 CAD</a><span class="acquire-note">Secure invoice sent by the studio</span></div>
+      <div class="acquire reveal"><button class="acquire-btn" type="button" data-artwork="Blues" data-size="26 × 20 in" data-price="$950 CAD">Acquire this work · $950 CAD</button><span class="acquire-note">Order &amp; shipping handled by the studio</span></div>
       <p class="reveal">A body of cold flame standing in a burning field, the exact inversion of the first canvas. Gentleness and violence share the same wall here: doves beside a blade, a rose beside dice, an open eye that never blinks.</p>
       <div class="fragments reveal">
         <p class="frag-label">Vocabulary: choose one</p>
@@ -642,7 +721,7 @@ a:focus-visible,.frame:focus-visible,button:focus-visible{outline:2px solid var(
         <dt>Medium</dt><dd>Acrylic &amp; paint marker on panel</dd>
         <dt>Status</dt><dd>Original, available</dd>
       </dl>
-      <div class="acquire reveal"><a class="acquire-btn" href="mailto:joachim.wodo@gmail.com?subject=Acquire%20Hunger%20%E2%80%94%20House%20of%20Duality&amp;body=Hello%20Amy%2C%0A%0AI%20would%20like%20to%20acquire%20%22Hunger%22%20(20%20x%2020%20in%2C%20%24500%20CAD).%0APlease%20send%20me%20the%20details%20to%20complete%20the%20purchase%20(payment%20and%20shipping).%0A%0AThank%20you%2C%0A">Acquire this work · $500 CAD</a><span class="acquire-note">Secure invoice sent by the studio</span></div>
+      <div class="acquire reveal"><button class="acquire-btn" type="button" data-artwork="Hunger" data-size="20 × 20 in" data-price="$500 CAD">Acquire this work · $500 CAD</button><span class="acquire-note">Order &amp; shipping handled by the studio</span></div>
       <p class="reveal">This piece explores the seduction of luxury and the identities we build around desire. The Porsche becomes more than a car. It becomes a mirror. Around it, symbols quietly emerge, each carrying a fragment of a larger story. <strong>Some may speak to you immediately. Others may wait.</strong></p>
       <div class="fragments reveal">
         <p class="frag-label">Fragments: choose one</p>
@@ -680,7 +759,7 @@ a:focus-visible,.frame:focus-visible,button:focus-visible{outline:2px solid var(
         <dt>Medium</dt><dd>Acrylic &amp; paint marker on canvas</dd>
         <dt>Status</dt><dd>Original, available</dd>
       </dl>
-      <div class="acquire reveal"><a class="acquire-btn" href="mailto:joachim.wodo@gmail.com?subject=Acquire%20Mercy%20%E2%80%94%20House%20of%20Duality&amp;body=Hello%20Amy%2C%0A%0AI%20would%20like%20to%20acquire%20%22Mercy%22%20(28%20x%2022%20in%2C%20%24750%20CAD).%0APlease%20send%20me%20the%20details%20to%20complete%20the%20purchase%20(payment%20and%20shipping).%0A%0AThank%20you%2C%0A">Acquire this work · $750 CAD</a><span class="acquire-note">Secure invoice sent by the studio</span></div>
+      <div class="acquire reveal"><button class="acquire-btn" type="button" data-artwork="Mercy" data-size="28 × 22 in" data-price="$750 CAD">Acquire this work · $750 CAD</button><span class="acquire-note">Order &amp; shipping handled by the studio</span></div>
       <p class="reveal">The story we show: a body folded into itself, warm and at rest on a field of cobalt scuffed with gold. The story we hide is drawn around it in white: a crown above, justice weighed against desire, a butterfly kept too safe to fly, a mirror that has already cracked.</p>
       <div class="fragments reveal">
         <p class="frag-label">Fragments: choose one</p>
@@ -740,7 +819,7 @@ a:focus-visible,.frame:focus-visible,button:focus-visible{outline:2px solid var(
 <section class="contact" id="contact">
   <div class="shell">
     <h2 class="reveal">Look <span class="outline">closer</span></h2>
-    <p class="reveal">Every painting is an original, one of a kind. To acquire a piece, use its <strong>Acquire</strong> button above or write to the studio directly. You'll receive a secure invoice and shipping details, and the work is reserved for you the moment you reach out.</p>
+    <p class="reveal">Every painting is an original, one of a kind. Use the <strong>Acquire</strong> button on any work to open a short order form; the studio confirms availability and sends a secure invoice with taxes and shipping. Your original is reserved the moment you submit it.</p>
     <ol class="steps reveal">
       <li><span>1</span>Choose a work and send your request</li>
       <li><span>2</span>Receive a secure invoice from the studio</li>
@@ -755,6 +834,67 @@ a:focus-visible,.frame:focus-visible,button:focus-visible{outline:2px solid var(
   <span>© 2026 Amy Lessard · House of Duality</span>
   <span>There are always two stories.</span>
 </footer>
+
+<!-- ================= ORDER MODAL ================= -->
+<div class="order" id="order" role="dialog" aria-modal="true" aria-labelledby="orderTitle">
+  <div class="order-card">
+    <button class="order-close" id="orderClose" type="button" aria-label="Close">Close ✕</button>
+
+    <div class="order-form-wrap" id="orderFormWrap">
+      <span class="order-eyebrow">Acquire an original · House of Duality</span>
+      <h3 id="orderTitle">Order details</h3>
+      <div class="order-summary">
+        <span>Artwork · <strong id="sumArt">—</strong></span>
+        <span id="sumSize">—</span>
+        <span class="price" id="sumPrice">—</span>
+      </div>
+
+      <form name="order" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="orderForm">
+        <input type="hidden" name="form-name" value="order">
+        <p class="hp"><label>Do not fill this out: <input name="bot-field"></label></p>
+        <input type="hidden" name="Artwork" id="fArt" value="">
+        <input type="hidden" name="Size" id="fSize" value="">
+        <input type="hidden" name="Price" id="fPrice" value="">
+
+        <div class="row">
+          <label>Full name<input type="text" name="Full name" required autocomplete="name"></label>
+          <label>Email<input type="email" name="Email" required autocomplete="email"></label>
+        </div>
+        <div class="row">
+          <label>Phone<input type="tel" name="Phone" autocomplete="tel"></label>
+          <label>Country<input type="text" name="Country" value="Canada" required autocomplete="country-name"></label>
+        </div>
+        <label>Shipping address<input type="text" name="Address" required autocomplete="address-line1" placeholder="Street and number"></label>
+        <div class="row">
+          <label>City<input type="text" name="City" required autocomplete="address-level2"></label>
+          <label>Province / State<input type="text" name="Province" required autocomplete="address-level1"></label>
+        </div>
+        <div class="row">
+          <label>Postal / ZIP code<input type="text" name="Postal code" required autocomplete="postal-code"></label>
+          <label>Preferred payment
+            <select name="Preferred payment">
+              <option>Interac e-Transfer</option>
+              <option>Credit card (invoice link)</option>
+              <option>PayPal</option>
+              <option>Other / not sure</option>
+            </select>
+          </label>
+        </div>
+        <label>Message to the studio (optional)<textarea name="Message" placeholder="Anything the studio should know"></textarea></label>
+
+        <button class="order-submit" type="submit">Send my order</button>
+        <p class="order-fineprint">No payment is taken here. The studio will confirm availability and send you a secure invoice with the total, taxes and shipping. Your original is reserved the moment you send this.</p>
+      </form>
+    </div>
+
+    <div class="order-success" id="orderSuccess">
+      <div class="tick">✓</div>
+      <h3>Order received</h3>
+      <p>Thank you. The studio has your request for <strong id="okArt">this work</strong> and will reply shortly with your invoice and shipping details.</p>
+      <button class="order-submit" type="button" id="orderDone" style="align-self:center">Close</button>
+    </div>
+  </div>
+</div>
 
 <!-- ================= LIGHTBOX ================= -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Artwork view">
@@ -791,6 +931,61 @@ document.querySelectorAll('.fragments').forEach(function(box){
     });
   });
 });
+
+// Order modal
+(function(){
+  var modal = document.getElementById('order');
+  if(!modal) return;
+  var form = document.getElementById('orderForm');
+  var wrap = document.getElementById('orderFormWrap');
+  var success = document.getElementById('orderSuccess');
+  var lastFocus = null;
+
+  function open(btn){
+    lastFocus = btn;
+    var art = btn.getAttribute('data-artwork'), size = btn.getAttribute('data-size'), price = btn.getAttribute('data-price');
+    document.getElementById('sumArt').textContent = art;
+    document.getElementById('sumSize').textContent = size;
+    document.getElementById('sumPrice').textContent = price;
+    document.getElementById('fArt').value = art;
+    document.getElementById('fSize').value = size;
+    document.getElementById('fPrice').value = price;
+    document.getElementById('okArt').textContent = art;
+    wrap.style.display = ''; success.classList.remove('on');
+    modal.classList.add('on'); document.body.style.overflow = 'hidden';
+    var first = form.querySelector('input[name="Full name"]'); if(first) first.focus();
+  }
+  function close(){
+    modal.classList.remove('on'); document.body.style.overflow = '';
+    if(lastFocus) lastFocus.focus();
+  }
+  document.querySelectorAll('.acquire-btn').forEach(function(b){
+    b.addEventListener('click', function(){ open(b); });
+  });
+  document.getElementById('orderClose').addEventListener('click', close);
+  document.getElementById('orderDone').addEventListener('click', close);
+  modal.addEventListener('click', function(e){ if(e.target === modal) close(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && modal.classList.contains('on')) close(); });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var data = new URLSearchParams(new FormData(form)).toString();
+    var btn = form.querySelector('.order-submit'); btn.textContent = 'Sending…';
+    fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:data})
+      .then(function(r){
+        if(!r.ok) throw new Error(r.status);
+        wrap.style.display='none'; success.classList.add('on'); form.reset(); btn.textContent='Send my order';
+      })
+      .catch(function(){
+        // fallback: open a pre-filled email so no order is ever lost
+        btn.textContent='Send my order';
+        var fd = new FormData(form);
+        var body = 'ORDER — House of Duality%0A%0A';
+        fd.forEach(function(v,k){ if(k!=='bot-field'&&k!=='form-name'&&v) body += encodeURIComponent(k)+': '+encodeURIComponent(v)+'%0A'; });
+        window.location.href = 'mailto:{EMAIL}?subject='+encodeURIComponent('Order — '+document.getElementById('fArt').value)+'&body='+body;
+      });
+  });
+})();
 
 // Lightbox
 var lb = document.getElementById('lightbox');
