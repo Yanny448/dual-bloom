@@ -1,7 +1,7 @@
-# House of Duality — Amy Lessard
+# The Beauty of Contradiction — Amy Lessard
 
-Portfolio site for **House of Duality**, the body of work of painter
-**Amy Lessard** — contemporary symbolic painting exploring the duality
+**The Beauty of Contradiction** — portfolio site of painter **Amy Lessard**
+(House of Duality series) — contemporary symbolic painting exploring the duality
 of the human experience.
 
 A single self-contained page (`index.html`): no build step, no dependencies.
