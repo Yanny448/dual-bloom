@@ -1,7 +1,8 @@
-# Dual Bloom — Artist Portfolio
+# House of Duality — Amy Lessard
 
-Portfolio site for the **Dual Bloom** body of work — contemporary symbolic
-painting exploring the duality of the human experience.
+Portfolio site for **House of Duality**, the body of work of painter
+**Amy Lessard** — contemporary symbolic painting exploring the duality
+of the human experience.
 
 A single self-contained page (`index.html`): no build step, no dependencies.
 Open it in a browser, or drop the whole folder on any static host
@@ -13,9 +14,9 @@ The three canvases live in `images/` (web-optimised, ~1800px):
 
 | File | Painting |
 |---|---|
-| `images/painting-01.jpg` | *Eat the Soul (11:11)* — orange figure on cobalt blue |
-| `images/painting-02.jpg` | *999* — pink & black Porsche wing |
-| `images/painting-03.jpg` | *He:ll (555)* — blue torso on flame red |
+| `images/painting-01.jpg` | *Mercy* — orange figure on cobalt blue |
+| `images/painting-02.jpg` | *Hunger* — pink & black Porsche wing |
+| `images/painting-03.jpg` | *Blues* — blue torso on flame red |
 
 Full-resolution originals are kept in `originals/`.
 
