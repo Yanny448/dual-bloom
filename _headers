@@ -1,0 +1,10 @@
+/*
+  X-Content-Type-Options: nosniff
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+/
+  Cache-Control: public, max-age=0, must-revalidate
+/images/*
+  Cache-Control: public, max-age=86400
+/og.jpg
+  Cache-Control: public, max-age=3600
