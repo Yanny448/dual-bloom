@@ -148,6 +148,13 @@ h1,h2,h3{font-family:var(--font-display);font-weight:400;text-wrap:balance}
 .nav ul a:hover,.nav ul a:focus-visible{opacity:1}
 .nav ul a:hover::after,.nav ul a:focus-visible::after{transform:scaleX(1);transform-origin:left}
 @media(max-width:640px){.nav ul{gap:1.1rem}.nav ul li:nth-child(2){display:none}}
+@media(max-width:600px){
+  .nav{padding:.9rem var(--pad)}
+  .nav .mark .mark-text{display:none}
+  .nav .mark .sig{width:28px;height:38px}
+  .nav ul{gap:1rem}
+  .nav ul a{font-size:.64rem;letter-spacing:.2em}
+}
 
 /* ---------- hero ---------- */
 .hero{
@@ -501,15 +508,15 @@ footer{
   position:relative;
 }
 .order-close{
-  position:absolute;top:1rem;right:1.2rem;
-  font-family:var(--font-utility);font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;
-  color:var(--chalk-dim);padding:.5rem;
+  position:absolute;top:.8rem;right:1rem;
+  font-family:var(--font-utility);font-size:1.2rem;line-height:1;
+  color:var(--chalk-dim);padding:.5rem .6rem;
 }
 .order-close:hover{color:var(--chalk)}
 .order h3{font-family:var(--font-display);font-size:clamp(1.7rem,4vw,2.4rem);color:var(--chalk)}
 .order .order-eyebrow{
   font-family:var(--font-utility);font-size:.62rem;letter-spacing:.34em;text-transform:uppercase;
-  color:var(--peach);margin-bottom:.5rem;display:block;
+  color:var(--peach);margin-bottom:.5rem;display:block;padding-right:2rem;
 }
 .order-summary{
   display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
@@ -641,7 +648,7 @@ a:focus-visible,.frame:focus-visible,button:focus-visible{outline:2px solid var(
 </div>
 
 <nav class="nav" aria-label="Main">
-  <a class="mark" href="#top"><svg viewBox="0 0 400 535" class="sig" aria-hidden="true"><use href="#sigmark"/></svg>House of Duality</a>
+  <a class="mark" href="#top"><svg viewBox="0 0 400 535" class="sig" aria-hidden="true"><use href="#sigmark"/></svg><span class="mark-text">House of Duality</span></a>
   <ul>
     <li><a href="#works" data-en="Works" data-fr="Œuvres">Works</a></li>
     <li><a href="#philosophy" data-en="Vocabulary" data-fr="Vocabulaire">Vocabulary</a></li>
@@ -880,7 +887,7 @@ a:focus-visible,.frame:focus-visible,button:focus-visible{outline:2px solid var(
 <!-- ================= ORDER MODAL ================= -->
 <div class="order" id="order" role="dialog" aria-modal="true" aria-labelledby="orderTitle">
   <div class="order-card">
-    <button class="order-close" id="orderClose" type="button" aria-label="Close / Fermer" data-en="Close ✕" data-fr="Fermer ✕">Close ✕</button>
+    <button class="order-close" id="orderClose" type="button" aria-label="Close / Fermer">✕</button>
 
     <div class="order-form-wrap" id="orderFormWrap">
       <span class="order-eyebrow" data-en="Acquire an original · House of Duality" data-fr="Acquérir un original · House of Duality">Acquire an original · House of Duality</span>
@@ -942,7 +949,7 @@ a:focus-visible,.frame:focus-visible,button:focus-visible{outline:2px solid var(
 
 <!-- ================= LIGHTBOX ================= -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Artwork view">
-  <button class="lb-close" id="lbClose" data-en="Close ✕" data-fr="Fermer ✕">Close ✕</button>
+  <button class="lb-close" id="lbClose" aria-label="Close / Fermer">✕</button>
   <div class="lb-stage" id="lbStage"></div>
   <p class="lb-cap" id="lbCap"></p>
 </div>
