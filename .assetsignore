@@ -1,0 +1,9 @@
+.git
+.gitignore
+originals
+share
+canva-src
+README.md
+netlify.toml
+wrangler.jsonc
+.assetsignore
