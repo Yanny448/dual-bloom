@@ -276,6 +276,20 @@ article:nth-of-type(even) .work>*{direction:ltr}
 .field-cobalt {background:linear-gradient(180deg,var(--ink) 0%,#15206b 18%,#15206b 82%,var(--ink) 100%)}
 .field-crimson{background:linear-gradient(180deg,var(--ink) 0%,#4c0a14 18%,#4c0a14 82%,var(--ink) 100%)}
 .field-flame  {background:linear-gradient(180deg,var(--ink) 0%,#84300f 18%,#84300f 82%,var(--ink) 100%)}
+.field-gold   {background:linear-gradient(180deg,var(--ink) 0%,#5c3a06 18%,#5c3a06 82%,var(--ink) 100%)}
+
+/* ---------- sold badge (premium) ---------- */
+.sold-badge{
+  position:absolute;top:1.15rem;left:1.15rem;z-index:3;
+  font-family:var(--font-utility);
+  font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--ink);background:var(--chalk);
+  padding:.5rem .95rem;
+  display:inline-flex;align-items:center;gap:.5rem;
+  box-shadow:0 10px 30px -12px rgba(0,0,0,.55);
+}
+.sold-badge::before{content:"";width:6px;height:6px;background:var(--ink);border-radius:50%}
+.plaque dd.sold-line{color:var(--chalk);letter-spacing:.04em}
 
 .frame{
   position:relative;
@@ -812,6 +826,45 @@ a:focus-visible,.frame:focus-visible,button:focus-visible{outline:2px solid var(
           <button class="frag" type="button" aria-pressed="false" data-line="Becoming has no finish line." data-line-en="Becoming has no finish line." data-line-fr="Devenir n&#39;a pas de ligne d&#39;arrivée." data-en="Kaizen" data-fr="Kaizen">Kaizen</button>
           <button class="frag" type="button" aria-pressed="false" data-line="What repeats can also trap." data-line-en="What repeats can also trap." data-line-fr="Ce qui se répète peut aussi emprisonner." data-en="The Circle" data-fr="Le Cercle">The Circle</button>
           <button class="frag" type="button" aria-pressed="false" data-line="Hunger always leaves evidence." data-line-en="Hunger always leaves evidence." data-line-fr="La faim laisse toujours des traces." data-en="The Teeth" data-fr="Les Dents">The Teeth</button>
+        </div>
+        <p class="frag-line" aria-live="polite">&nbsp;</p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- Work IV -->
+<article class="field-gold">
+  <div class="work sold">
+    <div class="frame reveal" tabindex="0" role="button" aria-label="View Becoming full screen"
+         data-caption="IV · Becoming · acrylic &amp; paint marker on canvas">
+      <span class="sold-badge" data-en="Sold" data-fr="Vendue">Sold</span>
+      <img class="art" src="images/painting-04.jpg?v=4" alt="Becoming: a teal-green torso on a bright yellow field, surrounded by pink line drawings: a bomb, a crown, a chess knight, the number 25, an AK-47, a roll of money, the four card suits, an angel wing, dice reading LIFE IS A GAMBLE, a radiant cross, a broken bone, a crosshair, a diamond, a fanged serpent, the word NOW and the word SACRIFICE." loading="lazy">
+      <div class="veil" aria-hidden="true">
+        <span class="zoom" data-en="Enlarge +" data-fr="Agrandir +">Enlarge +</span>
+        <p class="veil-label" data-en="The hidden layer" data-fr="La couche cachée">The hidden layer</p>
+        <p data-en="A bomb · a crown · the knight · 25 · an AK-47 · money · the four suits · an angel wing · the cross · a broken bone · a serpent. NOW, and SACRIFICE." data-fr="Une bombe · une couronne · le chevalier · 25 · un AK-47 · l&#39;argent · les quatre enseignes · une aile d&#39;ange · la croix · un os brisé · un serpent. NOW, et SACRIFICE.">A bomb · a crown · the knight · 25 · an AK-47 · money · the four suits · an angel wing · the cross · a broken bone · a serpent. NOW, and SACRIFICE.</p>
+      </div>
+    </div>
+    <div class="work-text">
+      <span class="work-num reveal">IV</span>
+      <h3 class="work-title reveal">Becoming</h3>
+      <p class="reveal" style="font-style:italic;color:var(--chalk-dim);margin:-.2rem 0 .3rem;font-size:.95rem" data-en="Commissioned for a private collector." data-fr="Réalisée sur commande pour un collectionneur privé.">Commissioned for a private collector.</p>
+      <dl class="plaque reveal">
+        <dt data-en="Artist" data-fr="Artiste">Artist</dt><dd>Amy Lessard</dd>
+        <dt data-en="Series" data-fr="Série">Series</dt><dd>House of Duality</dd>
+        <dt data-en="Medium" data-fr="Technique">Medium</dt><dd data-en="Acrylic &amp; paint marker on canvas" data-fr="Acrylique et marqueur sur toile">Acrylic &amp; paint marker on canvas</dd>
+        <dt data-en="Status" data-fr="Statut">Status</dt><dd class="sold-line" data-en="Sold · Private collection" data-fr="Vendue · Collection privée">Sold · Private collection</dd>
+      </dl>
+      <div class="acquire reveal"><span class="acquire-note" data-en="Private commission · not available" data-fr="Commande privée · non disponible">Private commission · not available</span></div>
+      <p class="reveal" data-en="Every version of ourselves is built through exchange. Becoming explores what we willingly surrender in pursuit of identity, ambition, love, belief, or power. Around the figure, symbols quietly emerge as echoes of the choices that shape us. <strong>Some reveal what was gained. Others reveal what it cost.</strong>" data-fr="Chaque version de nous-mêmes se construit par l&#39;échange. Becoming explore ce que l&#39;on abandonne volontairement dans la quête d&#39;identité, d&#39;ambition, d&#39;amour, de croyance ou de pouvoir. Autour de la figure, des symboles émergent discrètement, échos des choix qui nous façonnent. <strong>Certains révèlent ce qui a été gagné. D&#39;autres, ce qu&#39;il en a coûté.</strong>">Every version of ourselves is built through exchange. Becoming explores what we willingly surrender in pursuit of identity, ambition, love, belief, or power. Around the figure, symbols quietly emerge as echoes of the choices that shape us. <strong>Some reveal what was gained. Others reveal what it cost.</strong></p>
+      <div class="fragments reveal">
+        <p class="frag-label" data-en="Vocabulary: choose one" data-fr="Vocabulaire : choisissez-en un">Vocabulary: choose one</p>
+        <div class="frag-row" role="group" aria-label="Vocabulary">
+          <button class="frag" type="button" aria-pressed="false" data-line="There is no becoming anywhere else." data-line-en="There is no becoming anywhere else." data-line-fr="Il n&#39;y a pas de devenir ailleurs qu&#39;ici." data-en="NOW" data-fr="Maintenant">NOW</button>
+          <button class="frag" type="button" aria-pressed="false" data-line="Protection and destruction often wear the same shape." data-line-en="Protection and destruction often wear the same shape." data-line-fr="La protection et la destruction prennent souvent la même forme." data-en="AK-47" data-fr="AK-47">AK-47</button>
+          <button class="frag" type="button" aria-pressed="false" data-line="Healing remembers." data-line-en="Healing remembers." data-line-fr="La guérison se souvient." data-en="Broken Bone" data-fr="L&#39;Os brisé">Broken Bone</button>
+          <button class="frag" type="button" aria-pressed="false" data-line="Strength moves differently when it thinks first." data-line-en="Strength moves differently when it thinks first." data-line-fr="La force agit autrement quand elle réfléchit d&#39;abord." data-en="The Knight" data-fr="Le Chevalier">The Knight</button>
         </div>
         <p class="frag-line" aria-live="polite">&nbsp;</p>
       </div>
